@@ -6,7 +6,7 @@ const slides = [
     id: 1,
     content: (
       <>
-        <h1 className="text-5xl md:text-6xl font-bold text-[#50C8DC] leading-tight">
+        <h1 className="text-5xl md:text-6xl font-bold text-[#50C8DC] leading-tigh ">
           Microsoft Learn Student
           <br />
           <span className="text-[#0078D4]">Club</span>
@@ -47,21 +47,21 @@ const slides = [
         {/* RIGHT: TEXT CONTENT */}
         <div className="max-w-[28rem] text-left">
 
-          <h2 className="text-4xl font-bold text-[#50C8DC]">
+          <h2 className="text-4xl font-bold text-[#50C8DC] animate-slide delay-100">
             Upcoming Event
           </h2>
 
-          <h3 className="mt-4 text-3xl font-semibold text-[#0078D4]">
+          <h3 className="mt-4 text-3xl font-semibold text-[#0078D4] animate-slide delay-100">
             Imagine Cup 2026
           </h3>
 
-          <p className="mt-4 text-gray-200">
+          <p className="mt-4 text-gray-200 animate-slide delay-100">
             Imagine Cup is Microsoft’s global student startup competition where
             students turn bold ideas into real-world solutions using AI and cloud
             technologies.
           </p>
 
-          <ul className="mt-4 text-gray-200 list-disc list-inside space-y-2">
+          <ul className="mt-4 text-gray-200 list-disc list-inside space-y-2 animate-slide delay-100">
             <li>Up to $5,000 Azure credits</li>
             <li>Build real-world AI solutions</li>
             <li>Mentorship from Microsoft experts</li>
@@ -73,12 +73,12 @@ const slides = [
               href="https://imaginecup.microsoft.com"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3 rounded-lg bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold"
+              className="px-6 py-3 rounded-lg bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold animate-slide delay-100"
             >
               Register Now
             </a>
 
-            <button className="px-6 py-3 rounded-lg border border-[#50C8DC] text-[#50C8DC] hover:bg-[#50C8DC] hover:text-[#182C4A] transition font-semibold">
+            <button className="px-6 py-3 rounded-lg border border-[#50C8DC] text-[#50C8DC] hover:bg-[#50C8DC] hover:text-[#182C4A] transition font-semibold animate-slide delay-100">
               Learn More
             </button>
           </div>
@@ -110,9 +110,17 @@ export default function Carousel() {
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center text-center px-6">
       {/* Slide Content */}
-      <div className="transition-all duration-500">
+        <div
+        key={current}
+        className="
+            animate-slide
+            transition-all
+            duration-700
+            ease-out
+        "
+        >
         {slides[current].content}
-      </div>
+        </div>
 
       {/* Left Arrow */}
       <button

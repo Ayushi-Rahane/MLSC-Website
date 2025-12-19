@@ -10,3 +10,22 @@
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Slide-up fade-in animation */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide {
+  animation: slideUpFade 0.8s ease-out both;
+}
+.delay-100 { 
+    animation-delay: 0.1s;
+ }
