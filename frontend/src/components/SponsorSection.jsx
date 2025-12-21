@@ -34,13 +34,13 @@ export default function SponsorSection() {
   };
 
   return (
-    <section className="px-8 md:px-16 py-20 text-white text-center">
+    <section className="px-4 md:px-16 py-12 md:py-20 text-white text-center">
 
       {/* BUTTON ONLY */}
       {!showForm && !submitted && (
         <button
           onClick={() => setShowForm(true)}
-          className="px-8 py-4 rounded-xl bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold text-lg"
+          className="w-full md:w-auto px-6 py-3 rounded-xl bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold text-lg"
         >
           Join Us as a Sponsor
         </button>
@@ -48,11 +48,11 @@ export default function SponsorSection() {
 
       {/* SUCCESS MESSAGE */}
       {submitted && (
-        <div className="mt-12 max-w-2xl mx-auto rounded-xl bg-green-600/20 border border-green-500 p-6 text-green-300">
-          <h3 className="text-xl font-semibold mb-2">
+        <div className="mt-8 md:mt-12 max-w-2xl mx-auto rounded-xl bg-green-600/20 border border-green-500 p-4 md:p-6 text-green-300">
+          <h3 className="text-lg md:text-xl font-semibold mb-2">
             Sponsorship Inquiry Sent Successfully!
           </h3>
-          <p>
+          <p className="text-sm md:text-base">
             Thank you for reaching out. Our team will contact you within
             24–48 hours.
           </p>
@@ -63,43 +63,42 @@ export default function SponsorSection() {
       {showForm && !submitted && (
         <div
           ref={formRef}
-          className="mt-16 max-w-7xl mx-auto rounded-2xl bg-gradient-to-br from-[#223B5A] to-[#182C4A] p-10 shadow-xl
-                     animate-slideUp"
+          className="mt-10 md:mt-16 max-w-7xl mx-auto rounded-xl md:rounded-2xl bg-gradient-to-br from-[#223B5A] to-[#182C4A] p-6 md:p-10 shadow-xl animate-slideUp"
         >
 
           {/* HEADER */}
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-3xl font-bold">
             Sponsor MLSC
           </h2>
-          <p className="mt-4 text-gray-300 max-w-3xl mx-auto">
+          <p className="mt-3 md:mt-4 text-gray-300 max-w-3xl mx-auto text-sm md:text-base">
             Partner with MLSC to empower the next generation of technology leaders.
           </p>
 
           {/* BENEFITS */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <BenefitCard
               title="Brand Visibility"
               desc="Reach 500+ engaged students"
-              icon={<Users size={32} />}
+              icon={<Users size={28} />}
             />
             <BenefitCard
               title="Talent Pipeline"
               desc="Connect with top talent early"
-              icon={<Briefcase size={32} />}
+              icon={<Briefcase size={28} />}
             />
             <BenefitCard
               title="Community Impact"
               desc="Support education & innovation"
-              icon={<HeartHandshake size={32} />}
+              icon={<HeartHandshake size={28} />}
             />
           </div>
 
           {/* FORM */}
           <form
             onSubmit={handleSubmit}
-            className="mt-14 rounded-xl bg-[#243E5C] p-8 grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="mt-10 md:mt-14 rounded-xl bg-[#243E5C] p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
           >
-             <Input label="Company Name *" placeholder="Your company name" required />
+            <Input label="Company Name *" placeholder="Your company name" required />
             <Input label="Contact Person *" placeholder="Your name" required />
 
             <Input label="Email Address *" placeholder="company@example.com" type="email" required />
@@ -112,10 +111,10 @@ export default function SponsorSection() {
             />
 
             <div className="md:col-span-2">
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 font-medium text-sm md:text-base">
                 Sponsorship Interest *
               </label>
-              <select required className="input">
+              <select required className="w-full rounded-lg bg-[#506A85] px-3 py-2 text-white outline-none focus:ring-2 focus:ring-[#50C8DC]">
                 <option value="">Select an option</option>
                 <option>Event Sponsorship</option>
                 <option>Annual Partnership</option>
@@ -126,13 +125,13 @@ export default function SponsorSection() {
             </div>
 
             <div className="md:col-span-2">
-              <label className="block mb-2 font-medium">
+              <label className="block mb-2 font-medium text-sm md:text-base">
                 Additional Information
               </label>
               <textarea
                 rows="4"
                 placeholder="Tell us about your sponsorship goals..."
-                className="w-full rounded-lg bg-[#506A85] px-4 py-3 text-white outline-none focus:ring-2 focus:ring-[#50C8DC]"
+                className="w-full rounded-lg bg-[#506A85] px-3 py-2 text-white outline-none focus:ring-2 focus:ring-[#50C8DC]"
               />
             </div>
 
@@ -142,8 +141,8 @@ export default function SponsorSection() {
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#0078D4] hover:bg-[#50C8DC] transition py-3 font-semibold"
               >
-                <Mail size={18} />
-                Submit Sponsorship Inquiry
+                <Mail size={16} />
+                <span className="text-sm md:text-base">Submit Sponsorship Inquiry</span>
               </button>
             </div>
           </form>
@@ -158,10 +157,10 @@ export default function SponsorSection() {
 function Input({ label, className = "", ...props }) {
   return (
     <div className={className}>
-      <label className="block mb-2 font-medium">{label}</label>
+      <label className="block mb-2 font-medium text-sm md:text-base">{label}</label>
       <input
         {...props}
-        className="input"
+        className="w-full rounded-lg bg-[#506A85] px-3 py-2 md:px-4 md:py-3 text-white outline-none focus:ring-2 focus:ring-[#50C8DC]"
       />
     </div>
   );
@@ -169,12 +168,12 @@ function Input({ label, className = "", ...props }) {
 
 function BenefitCard({ title, desc, icon }) {
   return (
-    <div className="rounded-xl bg-[#2C4766] p-6 text-center hover:scale-[1.02] transition">
-      <div className="flex justify-center mb-4 text-[#50C8DC]">
+    <div className="rounded-xl bg-[#2C4766] p-4 md:p-6 text-center hover:scale-[1.02] transition">
+      <div className="flex justify-center mb-3 text-[#50C8DC]">
         {icon}
       </div>
-      <h4 className="text-lg font-semibold">{title}</h4>
-      <p className="mt-2 text-gray-300">{desc}</p>
+      <h4 className="text-md md:text-lg font-semibold">{title}</h4>
+      <p className="mt-2 text-sm md:text-base text-gray-300">{desc}</p>
     </div>
   );
 }

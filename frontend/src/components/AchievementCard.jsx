@@ -8,7 +8,7 @@ export default function AchievementCard({ item, isActive, onClick }) {
       ref={ref}
       onClick={onClick}
       className={`
-        cursor-pointer max-w-md rounded-xl bg-[#243A57] overflow-hidden
+        cursor-pointer w-full md:max-w-md rounded-xl bg-[#243A57] overflow-hidden
         transition-all duration-700
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
         ${isActive ? "ring-2 ring-[#50C8DC]" : ""}

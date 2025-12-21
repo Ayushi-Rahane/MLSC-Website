@@ -9,6 +9,7 @@ import {
   Heart,
   Instagram,
 } from "lucide-react";
+import mlscLogo from "../assets/mlsc_logo.png";
 
 export default function Footer() {
   return (
@@ -20,9 +21,10 @@ export default function Footer() {
 
           {/* BRAND */}
           <div>
-            <h3 className="text-xl font-bold text-white">
-              Microsoft Learn Student Club
-            </h3>
+            <img src={mlscLogo} alt="MLSC Logo" className="w-16 h-auto mb-3" />
+             <h3 className="text-xl font-bold text-white">
+               Microsoft Learn Student Club
+             </h3>
             <p className="mt-4 text-sm leading-relaxed">
               Empowering students through technology, innovation, and
               collaboration. Building future-ready tech leaders.
