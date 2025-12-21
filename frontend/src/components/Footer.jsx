@@ -53,7 +53,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-[#50C8DC]" />           
-                    Eesha Kamath: +91 8767121158
+                    Eesha Kamath: +91 8767121158 <br/>
                     Vaishnavi Ahire: +91 8530017432
               </li>
               <li className="flex items-start gap-3">
