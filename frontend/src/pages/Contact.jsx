@@ -16,10 +16,10 @@ export default function Contact() {
       {/* Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
         <ContactForm />
-         {/* Right column */}
+        {/* Right column */}
         <div>
-            <ContactInfoCard />
-            <FollowUs />
+          <ContactInfoCard />
+          <FollowUs />
         </div>
       </div>
     </section>

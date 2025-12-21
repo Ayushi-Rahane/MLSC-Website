@@ -1,6 +1,6 @@
 import React from 'react'
 import Timeline from '../components/Timeline'
-import events from '../data/events.json'
+import { events } from "../data/events.js";
 
 export default function Events() {
   return (
