@@ -1,7 +1,7 @@
 import AchievementImg1 from "../assets/achievement1.png";
 export const achievements = [
   {
-    id: 1,
+    id: crypto.randomUUID(),
     title: "MLSC Chapter Launch – CCEW",
     date: "January 2025",
     short: "Official launch of the Microsoft Learn Student Chapter at Cummins College of Engineering for Women, Pune.",
@@ -21,7 +21,7 @@ export const achievements = [
     side: "left",
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     title: "Tech Conference 2024",
     date: "October 2024",
     short: "Hosted our annual tech conference with 500+ attendees",
@@ -31,7 +31,7 @@ export const achievements = [
     side: "right",
   },
   {
-    id: 3,
+    id: crypto.randomUUID(),
     title: "Cloud Workshop Series",
     date: "September 2024",
     short: "Completed 8-week intensive Azure workshop series",
