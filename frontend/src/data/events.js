@@ -1,7 +1,7 @@
 import ImagineCupImage from "../assets/imagine_cup_banner.png";
 export const events = [
  {
-    id: crypto.randomUUID(),
+    id: 1,
     type: "Student Startup Competition",
     date: "Jan, 2026",
     title: "2026 Imagine Cup Competition",
@@ -12,7 +12,7 @@ export const events = [
     image: ImagineCupImage,
   },
   {
-    id: crypto.randomUUID(),
+    id: 2,
     type: "Workshop",
     date: "Jan 25, 2025",
     title: "Azure Cloud Workshop",
