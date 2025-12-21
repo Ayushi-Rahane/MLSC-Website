@@ -1,4 +1,28 @@
 [
-  { "name": "Alex Student", "role": "President" },
-  { "name": "Priya Dev", "role": "Lead Organizer" }
+  {
+    "id": "talent-tech",
+    "name": "Talent & Tech Team",
+    "head": "Talent & Tech Lead",
+    "members": [
+      {
+        "name": "Aarav Patel",
+        "position": "Frontend Developer"
+      },
+      {
+        "name": "Diya Sharma",
+        "position": "Backend Developer"
+      }
+    ]
+  },
+  {
+    "id": "codesphere",
+    "name": "Codesphere",
+    "head": "Jessica Taylor",
+    "members": [
+      {
+        "name": "Aryan Deshpande",
+        "position": "Tech Lead"
+      }
+    ]
+  }
 ]
