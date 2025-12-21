@@ -9,9 +9,11 @@ export default function Achievements() {
   return (
     <section className="px-8 md:px-16 py-20 text-white relative">
       {/* Heading */}
-      <h1 className="text-4xl font-bold">Our Achievements</h1>
-      <div className="w-16 h-1 bg-[#0078D4] mt-3 mb-6" />
-      <p className="text-gray-300 mb-16">
+        <div className="flex flex-col items-center mb-12">
+            <h1 className="text-4xl font-bold">Our Achievements</h1>
+            <div className="w-16 h-1 bg-[#0078D4] mt-3 mx-auto" />
+        </div>
+      <p className="text-gray-300 mb-16 text-center">
         A timeline of our milestones and accomplishments
       </p>
 
@@ -22,29 +24,51 @@ export default function Achievements() {
 
         <div className="space-y-24">
           {achievements.map((item) => (
-            <div
-              key={item.id}
-              className={`flex ${
-                item.side === "left" ? "justify-start" : "justify-end"
-              }`}
-            >
-              <div className="w-[45%]">
-                <AchievementCard
-                  item={item}
-                  isActive={active?.id === item.id}
-                  onClick={() =>
-                    setActive(active?.id === item.id ? null : item)
-                  }
-                />
+       <div className="grid grid-cols-[1fr_auto_1fr] gap-10 items-start">
 
-                {/* DETAILS POP */}
-                {active?.id === item.id && (
-                  <div className="mt-6">
-                    <AchievementDetails item={item} />
-                  </div>
+            {/* LEFT COLUMN */}
+            <div className="flex justify-end">
+                {item.side === "left" && (
+                <AchievementCard
+                    item={item}
+                    isActive={active?.id === item.id}
+                    onClick={() =>
+                    setActive(active?.id === item.id ? null : item)
+                    }
+                />
                 )}
-              </div>
+
+                {/* DETAILS FOR RIGHT-SIDE CARD */}
+                {active?.id === item.id && item.side === "right" && (
+                <AchievementDetails item={item} className="ml-6" />
+                )}
             </div>
+
+            {/* TIMELINE DOT */}
+            <div className="flex justify-center">
+                <span className="w-3 h-3 bg-[#50C8DC] rounded-full mt-6" />
+            </div>
+
+            {/* RIGHT COLUMN */}
+            <div className="flex justify-start">
+                {item.side === "right" && (
+                <AchievementCard
+                    item={item}
+                    isActive={active?.id === item.id}
+                    onClick={() =>
+                    setActive(active?.id === item.id ? null : item)
+                    }
+                />
+                )}
+
+                {/* DETAILS FOR LEFT-SIDE CARD */}
+                {active?.id === item.id && item.side === "left" && (
+                <AchievementDetails item={item} className="ml-6" />
+                )}
+            </div>
+            </div>
+
+
           ))}
         </div>
       </div>
