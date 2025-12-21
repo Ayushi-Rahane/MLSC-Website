@@ -2,10 +2,12 @@ import ContactForm from "../components/ContactForm";
 import ContactInfoCard from "../components/ContactInfoCard";
 import FollowUs from "../components/FollowUs";
 import SponsorSection from "../components/SponsorSection";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function Contact() {
+  const { ref, visible } = useScrollReveal();
   return (
-    <section className="min-h-screen px-8 md:px-16 lg:px-24 py-20 text-white">
+    <section ref={ref} className={`min-h-screen px-8 md:px-16 lg:px-24 py-20 text-white ${visible ? 'animate-slide-up' : 'opacity-0'}`}>
       {/* Heading */}
       <div className="flex flex-col items-center mb-12">
             <h1 className="text-4xl font-bold">Contact Us</h1>

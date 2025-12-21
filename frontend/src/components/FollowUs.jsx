@@ -1,8 +1,10 @@
 import { Linkedin, Instagram, Twitter, Facebook } from "lucide-react";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function FollowUs() {
+  const { ref, visible } = useScrollReveal();
   return (
-    <div className="bg-[#243A57] rounded-xl p-8 shadow-lg mt-8">
+    <div ref={ref} className={`bg-[#243A57] rounded-xl p-8 shadow-lg mt-8 ${visible ? 'animate-slide-up' : 'opacity-0'}`}>
       <h2 className="text-2xl font-semibold mb-6">
         Follow Us
       </h2>

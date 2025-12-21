@@ -1,8 +1,10 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 export default function ContactInfoCard() {
+  const { ref, visible } = useScrollReveal();
   return (
-    <div className="bg-[#243A57] rounded-xl p-8 shadow-lg space-y-6">
+    <div ref={ref} className={`bg-[#243A57] rounded-xl p-8 shadow-lg space-y-6 ${visible ? 'animate-slide-up' : 'opacity-0'}`}>
       <h2 className="text-2xl font-semibold">
         Get in Touch
       </h2>
