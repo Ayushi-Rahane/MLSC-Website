@@ -11,19 +11,17 @@ export default function Home() {
       <section id="home">
         <Carousel />
       </section>
-
-      <section id="about">
-        <About />
+      
+      <section id="events">
+        <Events />
       </section>
-
-   
 
       <section id="achievements">
         <Achievements />
       </section>
 
-      <section id="events">
-        <Events />
+     <section id="about">
+        <About />
       </section>
 
       <section id="contact">

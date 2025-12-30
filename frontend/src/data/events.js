@@ -10,6 +10,7 @@ export const events = [
     description:
       "Imagine Cup is Microsoft’s global student startup competition where students turn bold ideas into real-world solutions using AI and cloud technologies.",
     image: ImagineCupImage,
+     ongoing: true, 
   },
   {
     id: 2,
@@ -22,5 +23,6 @@ export const events = [
       "Hands-on workshop covering Azure fundamentals, cloud architecture, and deployment strategies",
     image:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998",
+       ongoing: false, 
   }
 ];

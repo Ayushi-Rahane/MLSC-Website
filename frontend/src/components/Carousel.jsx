@@ -1,57 +1,93 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Imagine_cup from "../assets/imagine_cup_banner.png";
 
+const spinnerFrames = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
+
 const slides = [
-  // SLIDE 1 — HERO
   {
     id: 1,
-    content: (
-      <div className="text-center max-w-4xl mx-auto px-4 sm:px-0">
-        {/* College Badge */}
-        <p className="text-xs sm:text-base text-[#50C8DC] tracking-wide mb-2 sm:mb-3">
-          MKSSS's Cummins College of Engineering for Women, Pune
-        </p>
+    content: ({
+      mounted,
+      scanDone,
+      setScanDone,
+      typedText,
+      typingDone,
+      rotatingText,
+      spinnerFrame,
+      cursorVisible,
+    }) => (
+      <div
+        className={`relative w-full min-h-[75vh] sm:min-h-[85vh]
+          flex flex-col items-center justify-center text-center px-4
+          transition-all duration-[2000ms] ease-out
+          ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}
+        `}
+      >
+        <div className="mb-6 px-4 py-1 rounded-full border border-[#50C8DC]/40 text-xs tracking-widest text-[#50C8DC] font-vt323">
+          SYSTEM ONLINE • v2.0.24
+        </div>
 
-        {/* Main Heading */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight font-orbitron">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#50C8DC]">
-            Microsoft Learn Student Club
-          </span>
+        <h1
+          className="font-orbitron font-extrabold text-[3.5rem] sm:text-[6rem] md:text-[7.5rem] leading-none text-white"
+          style={{
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            textShadow:
+              "0 0 20px rgba(0,120,212,0.4), 0 0 40px rgba(0,120,212,0.2)",
+          }}
+        >
+          MICROSOFT
         </h1>
 
-        {/* Chapter Identity */}
-        <p className="mt-2 sm:mt-3 text-sm sm:text-lg font-vt323 text-mlsc-dark-2">
-          Official Microsoft Learn Student Chapter at CCEW
-        </p>
+        <h2
+          className="relative overflow-hidden mt-2
+            text-[2.5rem] sm:text-[4.5rem] md:text-[5.5rem]
+            font-orbitron font-extrabold tracking-widest text-transparent"
+          style={{
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            textShadow:
+              "0 0 20px rgba(0,120,212,0.4), 0 0 40px rgba(0,120,212,0.2)",
+          }}
+        >
+          CHAPTER
+          {mounted && !scanDone && (
+            <span
+              className="chapter-scanline"
+              onAnimationEnd={() => setScanDone(true)}
+            />
+          )}
+        </h2>
 
-        {/* Tagline */}
-        <p className="mt-4 sm:mt-6 text-sm sm:text-lg font-vt323 text-mlsc-dark-3 max-w-2xl mx-auto">
-          Empowering students through technology, innovation, and collaboration
+        {/* TERMINAL */}
+        <p className="mt-6 text-sm sm:text-base font-vt323 text-[#9BB7D4] tracking-wide">
+          &gt; {typedText}
+          {typingDone && (
+            <>
+              <span className="mx-2 text-[#50C8DC]">
+                {spinnerFrame}
+              </span>
+              <span>{rotatingText}</span>
+            </>
+          )}
+          <span className="ml-1">
+            {cursorVisible ? "_" : " "}
+          </span>
         </p>
-
-        {/* CTA */}
-        <button className="mt-6 sm:mt-10 px-6 sm:px-8 py-3 rounded-lg bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold">
-          Explore Our Club
-        </button>
       </div>
     ),
   },
 
+
   // SLIDE 2 — IMAGINE CUP
   {
     id: 2,
-    content: (
+    content: () => (
       <div className="relative w-screen min-h-[75vh] sm:min-h-[85vh] flex items-center overflow-hidden">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${Imagine_cup})` }}
         />
-
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-l from-[#182C4A]/95 via-[#182C4A]/80 to-[#182C4A]/60" />
 
-        {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:pl-32 sm:pr-16 flex justify-center sm:justify-end">
           <div className="max-w-full sm:max-w-[28rem] text-left">
             <h2 className="text-xl sm:text-4xl font-bold text-[#50C8DC]">
@@ -98,47 +134,135 @@ const slides = [
 
 export default function Carousel() {
   const [current, setCurrent] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const [scanDone, setScanDone] = useState(false);
 
+  // TERMINAL TEXT LOGIC
+  const staticText = "Initializing neural link...";
+  const rotatingTexts = [
+    "Building the next generation of tech",
+    "Empowering students through technology, innovation, and collaboration",
+  ];
+
+  const [typedText, setTypedText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const [typingDone, setTypingDone] = useState(false);
+
+  const [rotationIndex, setRotationIndex] = useState(0);
+  const [spinnerIndex, setSpinnerIndex] = useState(0);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  const tickSound = useRef(null);
+
+  // INIT SOUND
+  useEffect(() => {
+    tickSound.current = new Audio("/sounds/tick.mp3");
+    tickSound.current.volume = 0.25;
+  }, []);
+
+ 
+  // MOUNT
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // TYPING (WITH SOUND)
+  useEffect(() => {
+    if (!mounted || typingDone) return;
+
+    if (charIndex < staticText.length) {
+      const timeout = setTimeout(() => {
+        setTypedText((p) => p + staticText[charIndex]);
+        setCharIndex((p) => p + 1);
+        tickSound.current?.play().catch(() => {});
+      }, 60);
+      return () => clearTimeout(timeout);
+    } else {
+      setTypingDone(true);
+    }
+  }, [mounted, charIndex, typingDone]);
+
+  // SPINNER + CURSOR SYNC + SOUND
+  useEffect(() => {
+    if (!typingDone) return;
+
+    const interval = setInterval(() => {
+      setSpinnerIndex((p) => (p + 1) % spinnerFrames.length);
+      setCursorVisible((p) => !p);
+      tickSound.current?.play().catch(() => {});
+    }, 120);
+
+    return () => clearInterval(interval);
+  }, [typingDone]);
+
+  // ROTATING TEXT
+  useEffect(() => {
+    if (!typingDone) return;
+
+    const interval = setInterval(() => {
+      setRotationIndex((p) => (p + 1) % rotatingTexts.length);
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [typingDone]);
+
+  // CAROUSEL
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      setCurrent((p) => (p + 1) % slides.length);
     }, 6000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center text-center px-4 sm:px-6">
-      {/* Slide */}
-      <div key={current} className="animate-slide transition-all duration-700">
-        {slides[current].content}
+    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center">
+      <div key={current}>
+        {slides[current].content({
+          mounted,
+          scanDone,
+          setScanDone,
+          typedText,
+          typingDone,
+          rotatingText: rotatingTexts[rotationIndex],
+          spinnerFrame: spinnerFrames[spinnerIndex],
+          cursorVisible,
+        })}
       </div>
+      {/* LEFT ARROW */}
+          <button
+            onClick={() =>
+              setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+            }
+            className="absolute left-4 sm:left-8 z-20
+                      w-10 h-10 sm:w-12 sm:h-12
+                      rounded-full
+                      bg-[#0078D4]/90 hover:bg-[#50C8DC]
+                      text-white text-2xl
+                      flex items-center justify-center
+                      backdrop-blur-md
+                      transition"
+          >
+            ‹
+          </button>
 
-      {/* Arrows */}
-      <button
-        onClick={() => setCurrent(current === 0 ? slides.length - 1 : current - 1)}
-        className="absolute left-3 sm:left-6 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0078D4] flex items-center justify-center"
-      >
-        ‹
-      </button>
+          {/* RIGHT ARROW */}
+          <button
+            onClick={() =>
+              setCurrent((prev) => (prev + 1) % slides.length)
+            }
+            className="absolute right-4 sm:right-8 z-20
+                      w-10 h-10 sm:w-12 sm:h-12
+                      rounded-full
+                      bg-[#0078D4]/90 hover:bg-[#50C8DC]
+                      text-white text-2xl
+                      flex items-center justify-center
+                      backdrop-blur-md
+                      transition"
+          >
+            ›
+          </button>
 
-      <button
-        onClick={() => setCurrent((current + 1) % slides.length)}
-        className="absolute right-3 sm:right-6 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#0078D4] flex items-center justify-center"
-      >
-        ›
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-6 sm:bottom-10 flex gap-3">
-        {slides.map((_, index) => (
-          <div
-            key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === current ? "bg-[#50C8DC]" : "bg-gray-500"
-            }`}
-          />
-        ))}
-      </div>
     </section>
   );
 }

@@ -11,11 +11,12 @@ export default function NetworkBackground() {
     let height = window.innerHeight;
     let dpr = window.devicePixelRatio || 1;
     let particles = [];
-    // Increase particle density for mesh-like structure
-    const particleCount = 140;
-    const maxDistance = 220;
+    // Reduce particle count on mobile for better performance
+    const particleCount = width < 768 ? 60 : 140;
+    const maxDistance = width < 768 ? 150 : 220;
     const mouse = { x: null, y: null };
     let rafId;
+    let frameCount = 0;
 
     // RGB tuples (no alpha) — we'll build rgba(...) strings where needed
     const colors = [
@@ -117,53 +118,33 @@ export default function NetworkBackground() {
     }
 
     function drawConnections() {
-      // Connect each particle to its k nearest neighbors for mesh/triangulation look
-      const k = 4; // number of neighbors
+      // Simplified, faster connection drawing - skip expensive calculations on every frame
+      // Only draw connections between nearby particles using simple distance check
       ctx.save();
-      ctx.lineWidth = 0.8;
+      ctx.lineWidth = 0.7;
       ctx.globalCompositeOperation = "lighter";
+      
+      const maxDist = maxDistance;
+      const maxDistSq = maxDist * maxDist;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        // build array of distances
-        const neighbors = [];
-        for (let j = 0; j < particles.length; j++) {
-          if (i === j) continue;
+        for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j];
           const dx = p.x - q.x;
           const dy = p.y - q.y;
-          const dist = dx * dx + dy * dy; // squared
-          neighbors.push({ idx: j, dist });
-        }
-        neighbors.sort((a, b) => a.dist - b.dist);
-        for (let n = 0; n < Math.min(k, neighbors.length); n++) {
-          const other = particles[neighbors[n].idx];
-          const realDist = Math.sqrt(neighbors[n].dist);
-          if (realDist > maxDistance) continue;
-          const alpha = (1 - realDist / maxDistance) * 0.6;
-          const { c1, c2 } = mixColor(p.colorIndex, other.colorIndex);
-
-          // draw a slightly curved line biased by mouse proximity
-          const nearMouse =
-            mouse.x !== null && (Math.hypot(p.x - mouse.x, p.y - mouse.y) < 160 || Math.hypot(other.x - mouse.x, other.y - mouse.y) < 160);
-
-          const grad = ctx.createLinearGradient(p.x, p.y, other.x, other.y);
-          grad.addColorStop(0, `rgba(${c1},${alpha})`);
-          grad.addColorStop(1, `rgba(${c2},${alpha})`);
-          ctx.strokeStyle = grad;
+          const distSq = dx * dx + dy * dy;
+          
+          if (distSq > maxDistSq) continue;
+          
+          const dist = Math.sqrt(distSq);
+          const alpha = (1 - dist / maxDist) * 0.4;
+          
+          // Simple solid color line - much faster than gradients
+          ctx.strokeStyle = `rgba(80,200,220,${alpha})`;
           ctx.beginPath();
-          if (nearMouse) {
-            const mx = mouse.x || (p.x + other.x) / 2;
-            const my = mouse.y || (p.y + other.y) / 2;
-            const cpX = mx + rand(-30, 30) * (realDist / maxDistance);
-            const cpY = my + rand(-30, 30) * (realDist / maxDistance);
-            ctx.moveTo(p.x, p.y);
-            ctx.quadraticCurveTo(cpX, cpY, other.x, other.y);
-          } else {
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(other.x, other.y);
-          }
-          ctx.shadowBlur = 10;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
           ctx.stroke();
         }
       }
@@ -172,8 +153,15 @@ export default function NetworkBackground() {
     }
 
     function animate() {
+      // Skip drawing on every frame on mobile - draw every 2 frames instead
+      if (width < 768 && frameCount % 2 !== 0) {
+        frameCount++;
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      frameCount++;
+
       ctx.clearRect(0, 0, width, height);
-      // subtle background vignette
       ctx.fillStyle = "rgba(5,10,20,0.22)";
       ctx.fillRect(0, 0, width, height);
 
@@ -183,8 +171,13 @@ export default function NetworkBackground() {
     }
 
     function onMouseMove(e) {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      // Throttle mouse tracking - only update every 50ms
+      const now = Date.now();
+      if (!onMouseMove.lastTime || now - onMouseMove.lastTime > 50) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        onMouseMove.lastTime = now;
+      }
     }
 
     function onMouseLeave() {

@@ -108,3 +108,327 @@ body {
 .input:focus {
   box-shadow: 0 0 0 2px #50C8DC;
 }
+
+/* Floating animation */
+
+@keyframes floatX {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(16px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-float {
+  animation: floatX 4s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   Miscellaneous Animations
+============================================================ */
+@keyframes ms-outline-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-ms-outline {
+  animation: ms-outline-spin 3s linear infinite;
+}
+
+/* ============================================================
+   SUBTLE GLITCH EFFECT — on hover
+============================================================ */ 
+@keyframes subtle-glitch {
+  0% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+  20% {
+    text-shadow: 12px 0 red;
+    transform: translate(-2px, 0);
+  }
+  40% {
+    text-shadow: -12px 0 cyan;
+    transform: translate(2px, 0);
+  }
+  60% {
+    text-shadow: 12px 0 red;
+    transform: translate(-2px, 0);
+  }
+  80% {
+    text-shadow: -12px 0 cyan;
+    transform: translate(2px, 0);
+  }
+  100% {
+    text-shadow: none;    
+    transform: translate(0);
+  }
+}
+
+
+
+/* ============================================================
+   NAVBAR — Subtle glitch hover
+============================================================ */
+@keyframes subtle-glitch {
+  0% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+  20% {
+    text-shadow:
+      -1px 0 rgba(80, 200, 220, 0.8),
+       1px 0 rgba(255, 255, 255, 0.6);
+    transform: translate(-0.5px, 0);
+  }
+  40% {
+    text-shadow:
+       1px 0 rgba(80, 200, 220, 0.6),
+      -1px 0 rgba(255, 255, 255, 0.4);
+    transform: translate(0.5px, 0);
+  }
+  100% {
+    text-shadow: none;
+    transform: translate(0);
+  }
+}
+
+.glitch-hover:hover {
+  animation: subtle-glitch 0.25s linear;
+}
+
+/* ============================================================
+   NAVBAR — One-time scanline
+============================================================ */
+@keyframes navbar-scan {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.navbar-scanline {
+  position: absolute;
+  inset: 0;
+  width: 160px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(80, 200, 220, 0.35),
+    rgba(80, 200, 220, 0.45),
+    transparent
+  );
+  animation: navbar-scan 1.8s ease-out forwards;
+}
+
+/* ============================================================
+   HERO — Typing cursor
+============================================================ */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typing-cursor {
+  margin-left: 2px;
+  color: #50c8dc; /* make it visible */
+  font-weight: 600;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* ============================================================
+   HERO — CHAPTER scanline (one-time)
+============================================================ */
+@keyframes chapter-scan {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.chapter-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px; /* wider for visibility */
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    rgba(80, 200, 220, 0.75),
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: chapter-scan 2.2s ease-out forwards;
+}
+
+
+/* ------------------------------
+   Reduced motion accessibility
+--------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------
+   Performance hints
+--------------------------------*/
+@supports (animation: fade 0s) {
+  .animate-slide {
+    will-change: opacity;
+  }
+}
+
+/* ------------------------------
+   Mobile performance optimizations
+--------------------------------*/
+@media (max-width: 768px) {
+  * {
+    box-shadow: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-shadow: none !important;
+  }
+}
+
+/* ============================================================
+   Miscellaneous Animations
+============================================================ */
+@keyframes ms-outline-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-ms-outline {
+  animation: ms-outline-spin 3s linear infinite;
+}
+
+
+/* ============================================================
+   FPS SAFE ROTATING MICROSOFT OUTLINE
+============================================================ */
+
+.ms-rotating-outline {
+  background-size: 300% 300%;
+  animation: ms-outline-spin 4s linear infinite;
+}
+
+/* Rotate ONLY on hover (FPS safe) */
+.group:not(:hover) .ms-rotating-outline {
+  animation: none;
+}
+
+/* ============================================================
+   ELECTRIC SPARKS — FLASH TOGETHER
+============================================================ */
+
+.spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #00a4ef;
+  border-radius: 50%;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px #00a4ef);
+}
+
+/* All sparks use SAME animation */
+.spark-all {
+  animation: sparkFlashSync 0.6s ease-in-out infinite;
+}
+
+/* CORNER POSITIONS */
+.top-left {
+  top: -4px;
+  left: -4px;
+}
+.top-right {
+  top: -4px;
+  right: -4px;
+}
+.bottom-left {
+  bottom: -4px;
+  left: -4px;
+}
+.bottom-right {
+  bottom: -4px;
+  right: -4px;
+}
+
+/* FLASH TOGETHER */
+@keyframes sparkFlashSync {
+  0%, 85%, 100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Normal rotation */
+.ms-rotating-outline {
+  background-size: 300% 300%;
+  animation: ms-outline-spin 4s linear infinite;
+}
+
+/* Faster rotation for ONGOING events */
+.ms-rotating-outline-fast {
+  background-size: 300% 300%;
+  animation: ms-outline-spin 1.8s linear infinite;
+}
+
+/* Rotate ONLY on hover (FPS safe) */
+.group:not(:hover) .ms-rotating-outline,
+.group:not(:hover) .ms-rotating-outline-fast {
+  animation: none;
+}

@@ -4,7 +4,70 @@
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #0b1f3a;
+  margin: 0;
+  padding: 0;
+  background-color: #0b1f3a;
+
+  /* Performance optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------
+   Reduced motion accessibility
+--------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------
+   Performance hints
+--------------------------------*/
+@supports (animation: fade 0s) {
+  .animate-slide {
+    will-change: opacity;
+  }
+}
+
+/* ------------------------------
+   Mobile performance optimizations
+--------------------------------*/
+@media (max-width: 768px) {
+  * {
+    box-shadow: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-shadow: none !important;
+  }
+}
+
+/* ============================================================
+   Miscellaneous Animations
+============================================================ */
+@keyframes ms-outline-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-ms-outline {
+  animation: ms-outline-spin 3s linear infinite;
 }
