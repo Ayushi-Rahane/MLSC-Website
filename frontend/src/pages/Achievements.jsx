@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useScrollReveal from "../hooks/useScrollReveal";
 import EventCard from "../components/events/EventCard";
 import { achievements } from "../data/achievements";
 import AchievementCard from "../components/AchievementCard";
@@ -7,13 +8,40 @@ import AchievementDetails from "../components/AchievementDetails";
 export default function Achievements() {
   const [active, setActive] = useState(null);
 
+  const { ref: headingRef, visible: headingVisible } = useScrollReveal();
+
   return (
     <section className="px-8 md:px-16 py-20 text-white relative">
       {/* Heading */}
-      <div className="flex flex-col items-center mb-12">
-        <h1 className="text-4xl font-bold">Our Achievements</h1>
-        <div className="w-16 h-1 bg-[#0078D4] mt-3 mx-auto" />
+     <div
+        ref={headingRef}
+        className={`
+          mb-16 inline-block relative
+          ${headingVisible ? "animate-heading-enter animate-heading-float" : "opacity-0"}
+        `}
+      >
+        <h1 className="text-6xl font-black mb-4"
+          style={{
+            background: "linear-gradient(135deg, #F25022 0%, #50C8DC 50%, #0078D4 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            filter: "drop-shadow(0 0 20px rgba(242, 80, 34, 0.3))"
+          }}
+        >
+          Our Achievements
+        </h1>
+        {/* Underline */}
+        <div className="w-40 h-1 bg-gradient-to-r from-[#F25022] via-[#50C8DC] to-[#0078D4] rounded-full" 
+          style={{ boxShadow: "0 0 15px rgba(242, 80, 34, 0.6)" }}
+        />
       </div>
+      {headingVisible && (
+        <>
+          <span className="spark spark-all top-left" />
+          <span className="spark spark-all top-right" />
+        </>
+      )}
       <p className="text-gray-300 mb-16 text-center">
         A timeline of our milestones and accomplishments
       </p>

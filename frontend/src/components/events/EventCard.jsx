@@ -16,7 +16,15 @@ export default function EventCard({ event }) {
     hover:scale-[1.03]
   `}
 >
-{/* MICROSOFT OUTLINE (FPS SAFE + ROTATING) */}
+  {visible && (
+    <>
+      <span className="spark spark-all top-left" />
+      <span className="spark spark-all top-right" />
+      <span className="spark spark-all bottom-left" />
+      <span className="spark spark-all bottom-right" />
+    </>
+  )}
+{/* MICROSOFT OUTLINE (HOVER ONLY ROTATION) */}
 <div className="pointer-events-none absolute inset-0 rounded-xl
   opacity-0 group-hover:opacity-100 transition duration-300
 ">
@@ -24,8 +32,8 @@ export default function EventCard({ event }) {
 {/* OUTLINE */}
 <div
   className={`
-    absolute inset-0 rounded-xl
-    ${event.ongoing ? "ms-rotating-outline-fast" : "ms-rotating-outline"}
+    absolute inset-0 rounded-xl transition-all duration-300 group-hover:animate-pulse
+    ${event.ongoing ? "group-hover:ms-rotating-outline-fast" : ""}
   `}
   style={{
     border: "2px solid transparent",

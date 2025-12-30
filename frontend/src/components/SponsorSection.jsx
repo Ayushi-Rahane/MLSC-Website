@@ -3,7 +3,7 @@ import {
   Users,
   Briefcase,
   HeartHandshake,
-  Mail
+  Mail, Sparkles , Rocket 
 } from "lucide-react";
 
 export default function SponsorSection() {
@@ -36,15 +36,52 @@ export default function SponsorSection() {
   return (
     <section className="px-4 md:px-16 py-12 md:py-20 text-white text-center">
 
-      {/* BUTTON ONLY */}
-      {!showForm && !submitted && (
-        <button
-          onClick={() => setShowForm(true)}
-          className="w-full md:w-auto px-6 py-3 rounded-xl bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold text-lg"
-        >
-          Join Us as a Sponsor
-        </button>
-      )}
+      {/* BUTTON WITH ANIMATION AND INSTRUCTIONS */}
+{!showForm && !submitted && (
+  <div className="space-y-4">
+
+    {/* Instruction text with Sparkles */}
+    <p className="flex items-center gap-2 text-gray-300 text-sm md:text-base mb-4">
+      <Sparkles size={20} className="flex-shrink-0 text-[#50C8DC]" />
+      <span>
+        Ready to partner with us? Click the button below to showcase your brand and support student innovation!
+      </span>
+    </p>
+
+    {/* Button */}
+    <button
+      onClick={() => setShowForm(true)}
+      className="relative w-full md:w-auto px-8 py-4 rounded-xl
+        bg-gradient-to-r from-[#0078D4] to-[#50C8DC]
+        hover:from-[#50C8DC] hover:to-[#0078D4]
+        transition font-semibold text-lg
+        group overflow-hidden
+      "
+      style={{
+        boxShadow:
+          "0 0 20px rgba(0, 120, 212, 0.6), inset 0 0 10px rgba(80, 200, 220, 0.2)",
+      }}
+    >
+      {/* Animated border glow */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r
+          from-[#50C8DC] via-[#0078D4] to-[#50C8DC]
+          opacity-0 group-hover:opacity-100
+          transition-opacity duration-300 animate-pulse
+        "
+        style={{ filter: "blur(5px)" }}
+      />
+
+      {/* Button content */}
+      <span className="relative flex items-center justify-center gap-2">
+        <Rocket size={20} className="flex-shrink-0" />
+        <span>Join Us as a Sponsor</span>
+        <span className="group-hover:translate-x-1 transition-transform">→</span>
+      </span>
+    </button>
+  </div>
+)}
+
 
       {/* SUCCESS MESSAGE */}
       {submitted && (

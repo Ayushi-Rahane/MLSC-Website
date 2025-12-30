@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import MlscLogo from "../assets/mlsc_logo.png";
 
@@ -7,6 +8,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { label: "Home", id: "home" },
@@ -22,8 +24,20 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
+  /* ---------- Check if on achievement detail page ---------- */
+  useEffect(() => {
+    if (location.pathname.startsWith("/achievement/")) {
+      setActiveSection("achievements");
+    }
+  }, [location]);
+
   /* ---------- Scroll spy + glow ---------- */
   useEffect(() => {
+    // Don't do scroll spy if we're on achievement detail page
+    if (location.pathname.startsWith("/achievement/")) {
+      return;
+    }
+
     const sections = navLinks.map((link) =>
       document.getElementById(link.id)
     );
@@ -46,7 +60,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [location]);
 
   const handleScroll = (sectionId) => {
     const element = document.getElementById(sectionId);

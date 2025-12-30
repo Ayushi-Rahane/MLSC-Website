@@ -151,6 +151,8 @@ export default function Carousel() {
   const [rotationIndex, setRotationIndex] = useState(0);
   const [spinnerIndex, setSpinnerIndex] = useState(0);
   const [cursorVisible, setCursorVisible] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const tickSound = useRef(null);
 
@@ -160,7 +162,6 @@ export default function Carousel() {
     tickSound.current.volume = 0.25;
   }, []);
 
- 
   // MOUNT
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), 300);
@@ -207,7 +208,7 @@ export default function Carousel() {
     return () => clearInterval(interval);
   }, [typingDone]);
 
-  // CAROUSEL
+  // CAROUSEL AUTO-ADVANCE
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((p) => (p + 1) % slides.length);
@@ -215,8 +216,40 @@ export default function Carousel() {
     return () => clearInterval(interval);
   }, []);
 
+  // KEYBOARD NAVIGATION
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+      } else if (e.key === "ArrowRight") {
+        setCurrent((prev) => (prev + 1) % slides.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // SWIPE NAVIGATION
+  useEffect(() => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    } else if (isRightSwipe) {
+      setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    }
+  }, [touchEnd]);
+
   return (
-    <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center">
+    <section 
+      className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center"
+      onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+      onTouchEnd={(e) => setTouchEnd(e.changedTouches[0].clientX)}
+    >
       <div key={current}>
         {slides[current].content({
           mounted,
@@ -230,38 +263,40 @@ export default function Carousel() {
         })}
       </div>
       {/* LEFT ARROW */}
-          <button
-            onClick={() =>
-              setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
-            }
-            className="absolute left-4 sm:left-8 z-20
-                      w-10 h-10 sm:w-12 sm:h-12
-                      rounded-full
-                      bg-[#0078D4]/90 hover:bg-[#50C8DC]
-                      text-white text-2xl
-                      flex items-center justify-center
-                      backdrop-blur-md
-                      transition"
-          >
-            ‹
-          </button>
+      <button
+        onClick={() =>
+          setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+        }
+        className="carousel-arrow absolute left-4 sm:left-8 z-20
+                  w-10 h-10 sm:w-12 sm:h-12
+                  rounded-full
+                  bg-[#0078D4]/90 hover:bg-[#50C8DC]
+                  text-white text-2xl
+                  flex items-center justify-center
+                  backdrop-blur-md
+                  transition
+                  border border-[#50C8DC]/50 hover:border-[#50C8DC]"
+      >
+        ‹
+      </button>
 
-          {/* RIGHT ARROW */}
-          <button
-            onClick={() =>
-              setCurrent((prev) => (prev + 1) % slides.length)
-            }
-            className="absolute right-4 sm:right-8 z-20
-                      w-10 h-10 sm:w-12 sm:h-12
-                      rounded-full
-                      bg-[#0078D4]/90 hover:bg-[#50C8DC]
-                      text-white text-2xl
-                      flex items-center justify-center
-                      backdrop-blur-md
-                      transition"
-          >
-            ›
-          </button>
+      {/* RIGHT ARROW */}
+      <button
+        onClick={() =>
+          setCurrent((prev) => (prev + 1) % slides.length)
+        }
+        className="carousel-arrow absolute right-4 sm:right-8 z-20
+                  w-10 h-10 sm:w-12 sm:h-12
+                  rounded-full
+                  bg-[#0078D4]/90 hover:bg-[#50C8DC]
+                  text-white text-2xl
+                  flex items-center justify-center
+                  backdrop-blur-md
+                  transition
+                  border border-[#50C8DC]/50 hover:border-[#50C8DC]"
+      >
+        ›
+      </button>
 
     </section>
   );

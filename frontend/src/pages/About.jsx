@@ -1,16 +1,57 @@
+import { Lightbulb, Zap, Code, Users, Sparkles, Handshake, Award } from "lucide-react";
+import useScrollReveal from "../hooks/useScrollReveal";
+
 export default function About() {
+  const { ref: headingRef, visible: headingVisible } = useScrollReveal();
+  const { ref: contentRef, visible: contentVisible } = useScrollReveal();
+
   return (
     <div id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      {/* Heading */}
-      <div className="mb-16">
-        <h1 className="text-5xl mb-6 text-white">About Us</h1>
-        <div className="w-20 h-1 bg-[#0078D4]"></div>
+      {/* Heading with Animation */}
+      <div 
+        ref={headingRef}
+        className={`mb-16 transition-all duration-700 ${
+          headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}
+      >
+        <div className={`${headingVisible ? 'animate-float-header' : ''} inline-block relative`}>
+          <h1 className="text-6xl font-black mb-6 relative inline-block"
+            style={{
+              background: "linear-gradient(135deg, #50C8DC 0%, #0078D4 50%, #F25022 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              filter: "drop-shadow(0 0 20px rgba(80, 200, 220, 0.3))"
+            }}
+          >
+            About Us
+          </h1>
+          {/* Glowing underline */}
+          <div 
+            className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-[#50C8DC] via-[#0078D4] to-[#F25022] w-full rounded-full"
+            style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.6), 0 0 40px rgba(0, 120, 212, 0.4)" }}
+          />
+          {headingVisible && (
+            <>
+              <span className="spark spark-all top-left" />
+              <span className="spark spark-all top-right" />
+            </>
+          )}
+        </div>
       </div>
 
       {/* Who we are + Vision */}
-      <div className="grid md:grid-cols-2 gap-12 mb-16">
+      <div 
+        ref={contentRef}
+        className={`grid md:grid-cols-2 gap-12 mb-16 transition-all duration-700 ${
+          contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}
+      >
         <div>
-          <h2 className="text-3xl mb-6 text-white">Who We Are</h2>
+          <h2 className="text-3xl mb-6 text-white relative inline-block">
+            Who We Are
+            <div className="absolute -bottom-1 left-0 h-0.5 bg-[#50C8DC] w-0 group-hover:w-full transition-all duration-300" />
+          </h2>
           <p className="text-white/80 mb-4 leading-relaxed">
             Microsoft Learn Student Club (MLSC) is a student-led technical community
             focused on learning, collaboration, and innovation. We bring together
@@ -23,8 +64,11 @@ export default function About() {
           </p>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-          <h3 className="text-2xl mb-6 text-[#50C8DC]">Our Vision</h3>
+        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-[#50C8DC] hover:bg-white/10 transition-all duration-300" style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
+          <h3 className="text-2xl mb-6 text-[#50C8DC] flex items-center gap-2">
+            <Sparkles size={24} />
+            Our Vision
+          </h3>
           <p className="text-white/80 leading-relaxed">
             To build a strong student tech ecosystem that nurtures innovation,
             teamwork, and industry-ready skills using Microsoft technologies.
@@ -34,31 +78,50 @@ export default function About() {
 
       {/* What we do */}
       <div className="mb-16">
-        <h2 className="text-3xl mb-8 text-white text-center">What We Do</h2>
+        <h2 className="text-3xl mb-8 text-white text-center relative inline-block w-full">
+          What We Do
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-[#50C8DC] to-[#0078D4] w-32 rounded-full" style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.6)" }} />
+        </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+          {/* Workshops */}
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300" style={{ boxShadow: "inset 0 0 15px rgba(80, 200, 220, 0)" }}>
+            <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <Code size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-2 text-white">Workshops</h3>
             <p className="text-white/70 text-sm">
               Hands-on sessions on web, cloud, AI and development tools.
             </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
+          {/* Hackathons */}
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+            <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <Zap size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-2 text-white">Hackathons</h3>
             <p className="text-white/70 text-sm">
               Competitive events focused on real-world problem solving.
             </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
+          {/* Projects */}
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+            <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <Lightbulb size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-2 text-white">Projects</h3>
             <p className="text-white/70 text-sm">
               Collaborative projects using modern frameworks and cloud platforms.
             </p>
           </div>
 
-          <div className="bg-white/5 p-6 rounded-lg border border-white/10 text-center">
+          {/* Networking */}
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+            <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <Users size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-2 text-white">Networking</h3>
             <p className="text-white/70 text-sm">
               Interacting with seniors, peers, mentors and industry professionals.
@@ -68,25 +131,37 @@ export default function About() {
       </div>
 
       {/* Values */}
-      <div className="bg-gradient-to-r from-[#0078D4]/20 to-[#50C8DC]/20 p-12 rounded-lg border border-white/10">
-        <h2 className="text-3xl mb-6 text-white text-center">Our Values</h2>
+      <div className="bg-gradient-to-r from-[#0078D4]/20 to-[#50C8DC]/20 p-12 rounded-lg border border-white/10 hover:border-[#50C8DC]/50 transition-all duration-300" style={{ boxShadow: "0 0 30px rgba(80, 200, 220, 0.2)" }}>
+        <h2 className="text-3xl mb-6 text-white text-center relative inline-block w-full">
+          Our Values
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-[#50C8DC] to-[#0078D4] w-32 rounded-full" style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.6)" }} />
+        </h2>
 
-        <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div>
+        <div className="grid md:grid-cols-3 gap-8 text-center mt-12">
+          <div className="group">
+            <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+              <Award size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-3 text-[#50C8DC]">Innovation</h3>
             <p className="text-white/70">
               Encouraging creativity and exploring new technologies.
             </p>
           </div>
 
-          <div>
+          <div className="group">
+            <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+              <Handshake size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-3 text-[#50C8DC]">Collaboration</h3>
             <p className="text-white/70">
               Learning and growing together as a community.
             </p>
           </div>
 
-          <div>
+          <div className="group">
+            <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+              <Sparkles size={32} className="text-[#50C8DC]" />
+            </div>
             <h3 className="text-xl mb-3 text-[#50C8DC]">Excellence</h3>
             <p className="text-white/70">
               Striving for quality, consistency, and impact.
