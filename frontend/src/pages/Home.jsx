@@ -16,9 +16,7 @@ export default function Home() {
         <About />
       </section>
 
-      <section id="team">
-        <Team />
-      </section>
+   
 
       <section id="achievements">
         <Achievements />
@@ -36,3 +34,8 @@ export default function Home() {
     </>
   );
 }
+/*
+   <section id="team">
+        <Team />
+      </section>
+*/

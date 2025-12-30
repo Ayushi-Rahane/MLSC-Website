@@ -11,6 +11,21 @@
   background-size: 40px 40px;
 }
 
+/* Global typography */
+:root {
+  --mlsc-text: #142e4d; /* base dark text color */
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--mlsc-text);
+}
+
+/* Utility fallbacks so you can use Tailwind font classes if needed */
+.font-orbitron { font-family: 'Orbitron', sans-serif; }
+.font-vt323 { font-family: 'VT323', monospace; }
+.font-sharetech { font-family: 'Share Tech Mono', monospace; }
+
 /* Slide-up fade-in animation */
 @keyframes slideUpFade {
   0% {

@@ -13,19 +13,19 @@ const slides = [
         </p>
 
         {/* Main Heading */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight font-orbitron">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0078D4] to-[#50C8DC]">
             Microsoft Learn Student Club
           </span>
         </h1>
 
         {/* Chapter Identity */}
-        <p className="mt-2 sm:mt-3 text-sm sm:text-lg text-gray-300">
+        <p className="mt-2 sm:mt-3 text-sm sm:text-lg font-vt323 text-mlsc-dark-2">
           Official Microsoft Learn Student Chapter at CCEW
         </p>
 
         {/* Tagline */}
-        <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-gray-400 max-w-2xl mx-auto">
+        <p className="mt-4 sm:mt-6 text-sm sm:text-lg font-vt323 text-mlsc-dark-3 max-w-2xl mx-auto">
           Empowering students through technology, innovation, and collaboration
         </p>
 
