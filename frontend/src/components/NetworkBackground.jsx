@@ -11,8 +11,20 @@ export default function NetworkBackground() {
     let height = window.innerHeight;
     let dpr = window.devicePixelRatio || 1;
     let particles = [];
-    // Reduce particle count on mobile for better performance
-    const particleCount = width < 768 ? 60 : 140;
+    // Particle count scales with viewport area but capped for performance
+    function computeParticleCount(w, h, dprVal) {
+      const area = w * h;
+      // base density: one particle per ~15k px on desktop, fewer on mobile
+      const density = w < 768 ? 22000 : 15000;
+      // scale with available CPU cores but clamp to a safe upper bound
+      const cores = (typeof navigator !== "undefined" && navigator.hardwareConcurrency) || 4;
+      const coreFactor = Math.min(2, Math.max(0.6, cores / 4));
+      const raw = Math.floor((area / (density * Math.max(1, dprVal))) * coreFactor);
+      const minCap = 40;
+      const maxCap = 220; // allow more nodes on capable machines
+      return Math.max(minCap, Math.min(maxCap, raw));
+    }
+    let particleCount = computeParticleCount(width, height, dpr);
     const maxDistance = width < 768 ? 150 : 220;
     const mouse = { x: null, y: null };
     let rafId;
@@ -45,7 +57,10 @@ export default function NetworkBackground() {
     class Particle {
       constructor() {
         this.reset();
-        this.radius = rand(0.9, 2.6);
+        // use smaller radii when particle counts grow to reduce fill cost
+        const maxRadius = particleCount > 160 ? 1.6 : 2.6;
+        const minRadius = particleCount > 160 ? 0.6 : 0.9;
+        this.radius = rand(minRadius, maxRadius);
         this.colorIndex = Math.floor(Math.random() * colors.length);
       }
 
@@ -57,21 +72,19 @@ export default function NetworkBackground() {
       }
 
       draw() {
-        ctx.save();
         const color = `rgba(${colors[this.colorIndex]},0.9)`;
         ctx.beginPath();
+        // main dot
         ctx.fillStyle = color;
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = color;
-        ctx.globalCompositeOperation = "lighter";
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
-        // subtle outer halo
+        // subtle outer halo (drawn without shadow to avoid GPU-heavy ops)
         ctx.beginPath();
         ctx.fillStyle = `rgba(${colors[this.colorIndex]},0.06)`;
-        ctx.arc(this.x, this.y, this.radius * 6, 0, Math.PI * 2);
+        const haloMultiplier = particleCount > 160 ? 3.5 : 5;
+        ctx.arc(this.x, this.y, this.radius * haloMultiplier, 0, Math.PI * 2);
         ctx.fill();
-        ctx.restore();
+        ctx.restore && ctx.restore();
       }
 
       update() {
@@ -138,10 +151,10 @@ export default function NetworkBackground() {
           if (distSq > maxDistSq) continue;
           
           const dist = Math.sqrt(distSq);
-          const alpha = (1 - dist / maxDist) * 0.4;
-          
-          // Simple solid color line - much faster than gradients
-          ctx.strokeStyle = `rgba(80,200,220,${alpha})`;
+          const alpha = (1 - dist / maxDist) * 0.35;
+
+          // Use a single, modest alpha color for connections
+          ctx.strokeStyle = `rgba(80,200,220,${alpha.toFixed(3)})`;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(q.x, q.y);
@@ -152,13 +165,26 @@ export default function NetworkBackground() {
       ctx.restore();
     }
 
-    function animate() {
-      // Skip drawing on every frame on mobile - draw every 2 frames instead
-      if (width < 768 && frameCount % 2 !== 0) {
-        frameCount++;
+    let paused = false;
+
+    function handleVisibility() {
+      paused = document.hidden;
+      if (!paused) {
+        // resume animation loop
+        frameCount = 0;
         rafId = requestAnimationFrame(animate);
-        return;
+      } else {
+        cancelAnimationFrame(rafId);
       }
+    }
+
+    function animate() {
+      if (paused) return;
+
+      // adaptively skip drawing connections more often when there are many particles
+      const base = width < 768 ? 60 : 80;
+      let connectionSkip = Math.max(1, Math.floor(particles.length / base));
+      connectionSkip = Math.min(6, connectionSkip); // cap skipping
       frameCount++;
 
       ctx.clearRect(0, 0, width, height);
@@ -166,7 +192,7 @@ export default function NetworkBackground() {
       ctx.fillRect(0, 0, width, height);
 
       particles.forEach((p) => p.update());
-      drawConnections();
+      if (frameCount % connectionSkip === 0) drawConnections();
       rafId = requestAnimationFrame(animate);
     }
 
@@ -187,20 +213,34 @@ export default function NetworkBackground() {
 
     setSize();
     init();
+
+    // Debounced resize for efficiency
+    let resizeTimer;
     const resizeHandler = () => {
-      setSize();
-      init();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        dpr = window.devicePixelRatio || 1;
+        setSize();
+        particleCount = computeParticleCount(width, height, dpr);
+        init();
+      }, 150);
     };
+
     window.addEventListener("resize", resizeHandler);
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibility);
 
-    animate();
+    // start animation
+    handleVisibility();
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(rafId);
     };
   }, []);
