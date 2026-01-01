@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -18,8 +19,8 @@ function App() {
       {/* Foreground Content */}
       <div className="relative z-10">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <>
                 <MemoizedNavbar />
@@ -27,12 +28,13 @@ function App() {
                   <MemoizedHome />
                 </main>
               </>
-            } 
+            }
           />
           <Route path="/achievement/:id" element={<AchievementDetail />} />
         </Routes>
       </div>
-    </div>
+      <Analytics />
+    </div >
   );
 }
 
