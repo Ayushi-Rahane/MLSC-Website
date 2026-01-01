@@ -47,7 +47,7 @@ export default function About() {
           contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}
       >
-        <div>
+        <div className="animate-float-y">
           <h2 className="text-3xl mb-6 text-white relative inline-block">
             Who We Are
             <div className="absolute -bottom-1 left-0 h-0.5 bg-[#50C8DC] w-0 group-hover:w-full transition-all duration-300" />
@@ -64,7 +64,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-[#50C8DC] hover:bg-white/10 transition-all duration-300" style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
+        <div className="animate-float-x bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10"  style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
           <h3 className="text-2xl mb-6 text-[#50C8DC] flex items-center gap-2">
             <Sparkles size={24} />
             Our Vision
@@ -85,7 +85,7 @@ export default function About() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {/* Workshops */}
-          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300" style={{ boxShadow: "inset 0 0 15px rgba(80, 200, 220, 0)" }}>
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300 animate-float-y" style={{ boxShadow: "inset 0 0 15px rgba(80, 200, 220, 0)" }}>
             <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
               <Code size={32} className="text-[#50C8DC]" />
             </div>
@@ -96,7 +96,7 @@ export default function About() {
           </div>
 
           {/* Hackathons */}
-          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300 animate-float-x animate-float-slow">
             <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
               <Zap size={32} className="text-[#50C8DC]" />
             </div>
@@ -107,7 +107,7 @@ export default function About() {
           </div>
 
           {/* Projects */}
-          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300 animate-float-y animate-float-slow">
             <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
               <Lightbulb size={32} className="text-[#50C8DC]" />
             </div>
@@ -118,7 +118,7 @@ export default function About() {
           </div>
 
           {/* Networking */}
-          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300">
+          <div className="group bg-white/5 p-6 rounded-lg border border-white/10 text-center hover:border-[#50C8DC] hover:bg-gradient-to-br hover:from-[#50C8DC]/10 hover:to-[#0078D4]/10 transition-all duration-300 animate-float-x">
             <div className="flex justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
               <Users size={32} className="text-[#50C8DC]" />
             </div>
@@ -131,7 +131,7 @@ export default function About() {
       </div>
 
       {/* Values */}
-      <div className="bg-gradient-to-r from-[#0078D4]/20 to-[#50C8DC]/20 p-12 rounded-lg border border-white/10 hover:border-[#50C8DC]/50 transition-all duration-300" style={{ boxShadow: "0 0 30px rgba(80, 200, 220, 0.2)" }}>
+      <div className="bg-gradient-to-r from-[#0078D4]/20 to-[#50C8DC]/20 p-12 rounded-lg border border-white/10 hover:border-[#50C8DC]/50 transition-all duration-300 animate-float-y animate-float-slow" style={{ boxShadow: "0 0 30px rgba(80, 200, 220, 0.2)" }}>
         <h2 className="text-3xl mb-6 text-white text-center relative inline-block w-full">
           Our Values
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-[#50C8DC] to-[#0078D4] w-32 rounded-full" style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.6)" }} />

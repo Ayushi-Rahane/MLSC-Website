@@ -3,7 +3,7 @@ import useScrollReveal from "../hooks/useScrollReveal";
 export default function ContactForm() {
   const { ref, visible } = useScrollReveal();
   return (
-    <div ref={ref} className={`bg-[#243A57] rounded-xl p-8 shadow-lg ${visible ? 'animate-slide-up' : 'opacity-0'}`}>
+    <div ref={ref} className={`bg-[#243A57] rounded-xl p-8 shadow-lg ${visible ? 'animate-slide-up' : 'opacity-0'} animate-float-y`}>
       <h2 className="text-2xl font-semibold mb-6">
         Send us a Message
       </h2>

@@ -49,7 +49,7 @@ export default function AchievementDetail() {
             ref={ref}
             className={`mb-12 rounded-xl overflow-hidden transition-all duration-700 ${
               visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-            }`}
+            } animate-float-y`}
           >
             <img 
               src={item.image} 
@@ -92,7 +92,7 @@ export default function AchievementDetail() {
               </div>
 
               {/* Description */}
-              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-[#50C8DC] hover:bg-white/10 transition-all duration-300" style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10 hover:border-[#50C8DC] hover:bg-white/10 transition-all duration-300 animate-float-y" style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
                 <p className="text-lg text-gray-300 leading-relaxed mb-6">
                   {item.details || item.short}
                 </p>
@@ -115,7 +115,7 @@ export default function AchievementDetail() {
             </div>
 
             {/* Sidebar Info Card */}
-            <div className="md:col-span-1">
+            <div className="md:col-span-1 animate-float-y">
               <div className="bg-gradient-to-br from-[#243A57] to-[#182C4A] rounded-xl p-8 border border-[#50C8DC]/20 sticky top-24">
                 <h3 className="text-xl font-bold text-[#50C8DC] mb-4">Achievement Details</h3>
                 <div className="space-y-4">

@@ -8,7 +8,7 @@ export default function ContactInfoCard() {
       ref={ref} 
       className={`bg-[#243A57] rounded-xl p-8 space-y-6 border border-[#50C8DC]/30 transition-all duration-700 ${
         visible ? 'animate-slide-up' : 'opacity-0'
-      }`}
+      } animate-float-y`}
       style={{
         boxShadow: visible ? "inset 0 0 20px rgba(80, 200, 220, 0.1), 0 0 30px rgba(80, 200, 220, 0.2)" : "none"
       }}

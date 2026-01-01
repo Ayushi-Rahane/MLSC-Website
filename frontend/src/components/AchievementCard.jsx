@@ -14,7 +14,7 @@ export default function AchievementCard({ item, isActive, onClick }) {
           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
           ${isActive ? "ring-2 ring-[#50C8DC]" : ""}
           hover:ring-2 hover:ring-[#50C8DC] relative
-        `}
+        animate-float-y`}
         style={{
           boxShadow: visible && isActive ? "0 0 30px rgba(80, 200, 220, 0.6)" : "none",
           transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)"

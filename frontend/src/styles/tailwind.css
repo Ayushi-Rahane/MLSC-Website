@@ -782,3 +782,87 @@ body {
     transform: translateX(100%);
   }
 }
+
+
+/* ============================================================
+   CYBERPUNK & TECH EFFECTS FOR FORM ELEMENTS
+============================================================ */ 
+.input-tech {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #506A85;
+  padding: 0.75rem 1rem;
+  color: white;
+  outline: none;
+  border: 1px solid rgba(80, 200, 220, 0.3);
+  transition: all 0.3s ease;
+} 
+.input-tech:focus {
+  box-shadow: 0 0 10px rgba(80, 200, 220, 0.8);
+  border-color: rgba(80, 200, 220, 0.8);
+}
+.select-tech {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: #506A85;
+  padding: 0.75rem 1rem;
+  color: white;
+  outline: none;
+  border: 1px solid rgba(80, 200, 220, 0.3);
+  transition: all 0.3s ease;
+}
+.select-tech:focus {
+  box-shadow: 0 0 10px rgba(80, 200, 220, 0.8);
+  border-color: rgba(80, 200, 220, 0.8);
+}   
+.button-tech {
+  background: #182C4A;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.button-tech:hover {
+  box-shadow: 0 0 20px rgba(80, 200, 220, 0.8);
+}
+.button-tech:active {
+  transform: scale(0.95);
+}
+.button-tech::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: pulse-wave 3s infinite;
+}
+
+
+/* ============================================================
+  Floating animation 
+============================================================ */
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+.animate-float-y {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.animate-float-x {
+  animation: floatX 7s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation-duration: 9s;
+}

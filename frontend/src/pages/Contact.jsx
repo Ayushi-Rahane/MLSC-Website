@@ -32,7 +32,7 @@ export default function Contact() {
               </>
             )}
       </div>
-      <p className="text-gray-300 mb-1 text-center">
+      <p className="text-gray-300 mb-1 text-center animate-float-x">
         Get in touch with us. We'd love to hear from you!
       </p>
        <SponsorSection/>

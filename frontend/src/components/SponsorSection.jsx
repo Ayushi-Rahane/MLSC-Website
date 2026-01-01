@@ -41,7 +41,7 @@ export default function SponsorSection() {
   <div className="space-y-4 flex flex-col items-center text-center">
 
   {/* Instruction text with Sparkles */}
-  <p className="flex items-center justify-center gap-2 text-gray-300 text-sm md:text-base mb-4">
+  <p className="flex items-center justify-center gap-2 text-gray-300 text-sm md:text-base mb-4 animate-float-x">
     <Sparkles size={20} className="flex-shrink-0 text-[#50C8DC]" />
     <span>
       Ready to partner with us? Click the button below to showcase your brand and support student innovation!
@@ -55,7 +55,7 @@ export default function SponsorSection() {
       bg-gradient-to-r from-[#0078D4] to-[#50C8DC]
       hover:from-[#50C8DC] hover:to-[#0078D4]
       transition font-semibold text-lg
-      group overflow-hidden
+      group overflow-hidden animate-float-y
     "
     style={{
       boxShadow:
@@ -87,7 +87,7 @@ export default function SponsorSection() {
 
       {/* SUCCESS MESSAGE */}
       {submitted && (
-        <div className="mt-8 md:mt-12 max-w-2xl mx-auto rounded-xl bg-green-600/20 border border-green-500 p-4 md:p-6 text-green-300">
+        <div className="mt-8 md:mt-12 max-w-2xl mx-auto rounded-xl bg-green-600/20 border border-green-500 p-4 md:p-6 text-green-300 animate-float-y">
           <h3 className="text-lg md:text-xl font-semibold mb-2">
             Sponsorship Inquiry Sent Successfully!
           </h3>
