@@ -5,10 +5,14 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import AchievementDetail from "./pages/AchievementDetail";
 import NetworkBackground from "./components/NetworkBackground";
+import Footer from "./components/Footer";
+
+import Team from "./pages/Team";
 
 const MemoizedNetworkBackground = memo(NetworkBackground);
 const MemoizedNavbar = memo(Navbar);
 const MemoizedHome = memo(Home);
+const MemoizedTeam = memo(Team);
 
 function App() {
   return (
@@ -31,6 +35,18 @@ function App() {
             }
           />
           <Route path="/achievement/:id" element={<AchievementDetail />} />
+          <Route
+            path="/team"
+            element={
+              <>
+                <MemoizedNavbar />
+                <main className="pt-20">
+                  <MemoizedTeam />
+                </main>
+                <Footer />
+              </>
+            }
+          />
         </Routes>
       </div>
       <Analytics />

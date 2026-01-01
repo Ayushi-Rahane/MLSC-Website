@@ -1,212 +1,118 @@
-import { useState } from "react";
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import TeamTabs from "../components/TeamTabs";
+import SubTeamView from "../components/SubTeamView";
+import TeamMemberCard from "../components/TeamMemberCard";
+import { teamData, mlscHead } from "../data/teamData";
+import { Linkedin, Github } from "lucide-react";
 
 export default function Team() {
-  const [expandedSubteams, setExpandedSubteams] = useState({});
+  const [activeTab, setActiveTab] = useState(teamData[0].id);
+  const activeDomain = teamData.find(d => d.id === activeTab);
 
-  const mlscHead = {
-    name: "Vaishnavi Ahirre",
-    role: "MLSC Head",
-  };
-
-  const teams = [
-    {
-      id: "talent-tech",
-      name: "Talent & Tech Team",
-      head: "Karishma Chidgopkar",
-      color: "from-purple-500 to-purple-600",
-      subTeams: [
-        {
-          id: "web3",
-          name: "Web3",
-          members: [
-            "Dnyaneshwari Khatke",
-            "Aditi Shivapurkar",
-            "Riya Khare"
-          ],
-        },
-        {
-          id: "webdev",
-          name: "Web Dev",
-          members: [
-            "Ayushi Rahane",
-            "Srushti Sondawalde",
-            "Prisha Parikh"
-          ],
-        },
-        {
-          id: "aiml",
-          name: "AIML",
-          members: [
-            "Shriya Jaripatke",
-            "Sanjana Kulkarni",
-            "Sakshi Kale",
-            "Tanmayi Kulkarni",
-            "Sahisha Chipade"
-          ],
-        },
-      ],
-    },
-    {
-      id: "skillsphere",
-      name: "SkillSphere",
-      head: "Head name",
-      color: "from-blue-500 to-blue-600",
-      subTeams: [
-        {
-          id: "content",
-          name: "Content",
-          members: [
-            "Varda Kachroo",
-            "Prachi Gagnani",
-            "Rucha Walvekar"
-          ],
-        },
-        {
-          id: "events",
-          name: "Events",
-          members: [
-            "Bhakti Dharmadhikari",
-            "Ira Ketkar",
-            "Mrunal Deore",
-            "Tahjua Chavan"
-          ],
-        },
-        {
-          id: "pr",
-          name: "PR & Marketing",
-          members: [
-            "Swarali Rake",
-            "Chinmayee Chaple",
-            "Mukta Deshpande"
-          ],
-        },
-        {
-          id: "creative",
-          name: "Creative Design & SM",
-          members: [
-            "Hindavi Bhosale",
-            "Mayoori Kulkarni",
-            "Shraddha Bhujbal",
-            "Suhani Patil"
-          ],
-        },
-      ],
-    },
-    {
-      id: "codesphere",
-      name: "CodeSphere",
-      head: "Head name",
-      color: "from-green-500 to-green-600",
-      members: [
-        "Sofia Shahapure",
-        "Aishwari Bakshi",
-        "Disha Patil",
-        "Mitwa Gami"
-      ],
-    },
-    {
-      id: "finance",
-      name: "Finance",
-      head: "Head Name",
-      color: "from-orange-500 to-orange-600",
-      members: [
-        "Arya Dixit",
-        "Shubhashree Shinde",
-        "Radha Shukla",
-        "Veena Shastri"
-      ],
-    },
-  ];
-
-  const toggleSubteam = (subteamId) => {
-    setExpandedSubteams(prev => ({ ...prev, [subteamId]: !prev[subteamId] }));
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-bold text-white mb-4">Meet The Team</h1>
-        <div className="w-20 h-1 bg-blue-500 mb-6"></div>
-        <p className="text-white/70 text-lg mb-16">
-          Microsoft Learn Student Chapter 2025–26
-        </p>
+    <div className="min-h-screen relative pb-32 overflow-hidden w-full">
+      {/* Transparent container to let App.jsx background show through */}
 
-        {/* MLSC Head */}
-        <div className="flex justify-center mb-16">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl shadow-2xl p-8 min-w-[320px] text-center transform hover:scale-105 transition-transform">
-            <div className="text-3xl font-bold mb-2">{mlscHead.name}</div>
-            <div className="text-lg opacity-90">{mlscHead.role}</div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10 pt-32">
+
+        {/* Page Header */}
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h1 className="text-6xl md:text-8xl font-black font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-[#00c6ff] via-[#0072ff] to-[#00c6ff] drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] drop-shadow-[0_0_30px_rgba(192,192,192,0.6)] mb-4 tracking-tighter animate-pulse-slow">
+            The Minds Behind MLSC
+          </h1>
+          <div className="flex items-center justify-center gap-4">
+            <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#50C8DC] shadow-[0_0_15px_#50C8DC]"></div>
+            <p className="font-vt323 text-2xl text-[#50C8DC] tracking-[0.2em] drop-shadow-[0_0_8px_rgba(80,200,220,0.8)]">
+              SYSTEM_CREATORS_2025-2026
+            </p>
+            <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-[#50C8DC] shadow-[0_0_15px_#50C8DC]"></div>
           </div>
         </div>
 
-        {/* Connecting line */}
-        <div className="flex justify-center mb-8">
-          <div className="w-0.5 h-12 bg-white/20"></div>
-        </div>
+        {/* MLSC Head Section - The "Core" */}
+        <div className="flex justify-center mb-24 relative">
+          {/* Center Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
-        {/* Teams Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teams.map((team) => (
-            <div key={team.id} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all">
-              {/* Team Head */}
-              <div className={`bg-gradient-to-r ${team.color} text-white p-6 text-center`}>
-                <h3 className="text-xl font-bold mb-2">{team.name}</h3>
-                <div className="text-sm opacity-90 bg-white/20 rounded-lg py-2 px-3 inline-block">
-                  Lead: {team.head}
-                </div>
-              </div>
-
-              {/* Subteams or Direct Members */}
-              <div className="p-4">
-                {team.subTeams ? (
-                  <div className="space-y-3">
-                    {team.subTeams.map((sub) => (
-                      <div key={sub.id}>
-                        <button
-                          onClick={() => toggleSubteam(sub.id)}
-                          className="w-full bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg p-3 text-white text-left flex items-center justify-between transition-all"
-                        >
-                          <span className="font-medium">{sub.name}</span>
-                          {expandedSubteams[sub.id] ? (
-                            <ChevronDown className="w-4 h-4" />
-                          ) : (
-                            <ChevronRight className="w-4 h-4" />
-                          )}
-                        </button>
-
-                        {/* Members appear below the subteam button */}
-                        {expandedSubteams[sub.id] && (
-                          <div className="mt-2 ml-2 space-y-2">
-                            {sub.members.map((member, idx) => (
-                              <div
-                                key={idx}
-                                className="bg-white/5 border border-white/10 rounded-lg p-2 text-white/90 text-sm"
-                              >
-                                {member}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    {team.members.map((member, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-white/10 border border-white/20 rounded-lg p-3 text-white text-sm"
-                      >
-                        {member}
-                      </div>
-                    ))}
-                  </div>
-                )}
+          <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 md:p-12 text-center max-w-2xl w-full relative group hover:border-[#50C8DC]/50 transition-all duration-500 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            {/* Head Avatar */}
+            <div className="w-48 h-48 mx-auto mb-8 relative">
+              <div className="absolute inset-0 rounded-full border-2 border-[#50C8DC] animate-ping opacity-20"></div>
+              <div className="absolute inset-0 rounded-full border border-[#50C8DC] shadow-[0_0_20px_#50C8DC]"></div>
+              <img
+                src={mlscHead.image}
+                alt="Head"
+                className="w-full h-full rounded-full object-cover bg-slate-900 relative z-10"
+              />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#50C8DC] text-[#050a14] font-bold font-orbitron px-4 py-1 rounded text-sm whitespace-nowrap z-20">
+                CHAPTER LEAD
               </div>
             </div>
-          ))}
+
+            <h2 className="text-4xl font-bold text-white mb-2">{mlscHead.name}</h2>
+            <p className="text-[#50C8DC] text-xl font-vt323 tracking-widest mb-6">{mlscHead.role} | {mlscHead.classDept}</p>
+
+            <p className="text-white/70 italic text-lg mb-8 font-serif">
+              "{mlscHead.quote}"
+            </p>
+
+            <div className="flex gap-4 mt-4 justify-center">
+              <a
+                href={mlscHead.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all hover:scale-110 shadow-sm group-hover:animate-shake"
+              >
+                <Linkedin size={18} />
+              </a>
+
+              {/* Always show GitHub with fallback or actual link */}
+              <a
+                href={mlscHead.github || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-[#333] hover:border-[#333] transition-all hover:scale-110 shadow-sm group-hover:animate-shake"
+                style={{ animationDelay: "0.1s" }} // Slight stagger for shake
+              >
+                <Github size={18} />
+              </a>
+            </div>
+
+          </div>
+
+
         </div>
+
+        {/* Domain Selection Tabs */}
+        <TeamTabs
+          domains={teamData}
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+        />
+
+        {/* Selected Domain Content */}
+        {activeDomain && (
+          <div className="animate-fade-in-up">
+
+            {/* Domain Lead (Optional - if the domain itself has a lead, distinct from subteams) */}
+            {activeDomain.lead && (
+              <div className="flex flex-col items-center justify-center mb-16">
+                <div className="text-[#50C8DC] font-vt323 tracking-widest mb-4 text-2xl">--- {activeDomain.domainName.toUpperCase()} LEAD ---</div>
+                <div className="w-full max-w-sm">
+                  <TeamMemberCard member={activeDomain.lead} color={activeDomain.color} isLead={true} />
+                </div>
+              </div>
+            )}
+
+            {/* Subteams View */}
+            <SubTeamView domain={activeDomain} />
+          </div>
+        )}
+
       </div>
     </div>
   );

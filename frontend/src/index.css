@@ -3,10 +3,18 @@
 @tailwind utilities;
 
 html,
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
-  background-color: #0b1f3a;
+  background-color: #0b1f3a !important;
+  /* Force dark background everywhere */
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Strict overflow hiding */
+  position: relative;
+  /* Context for absolute children */
 
   /* Performance optimization */
   -webkit-font-smoothing: antialiased;
@@ -17,6 +25,7 @@ body {
    Reduced motion accessibility
 --------------------------------*/
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -60,9 +69,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -70,4 +81,120 @@ body {
 
 .animate-ms-outline {
   animation: ms-outline-spin 3s linear infinite;
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-shake:hover {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shake {
+
+    10%,
+    90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Clip-path for Cyberpunk Card Corner */
+  .clip-corner {
+    clip-path: polygon(0 0,
+        100% 0,
+        100% 85%,
+        85% 100%,
+        0 100%);
+  }
+}
+
+/* 3D Flip Card Utilities */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Cyberpunk Clip Path */
+.clip-path-cyber {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-path-cyber-corner {
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+}
+
+/* Custom Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

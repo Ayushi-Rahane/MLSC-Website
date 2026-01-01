@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import MlscLogo from "../assets/mlsc_logo.png";
 
@@ -9,6 +9,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { label: "Home", id: "home" },
@@ -24,17 +25,19 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  /* ---------- Check if on achievement detail page ---------- */
+  /* ---------- Check if on specific pages ---------- */
   useEffect(() => {
     if (location.pathname.startsWith("/achievement/")) {
       setActiveSection("achievements");
+    } else if (location.pathname === "/team") {
+      setActiveSection("team");
     }
   }, [location]);
 
   /* ---------- Scroll spy + glow ---------- */
   useEffect(() => {
-    // Don't do scroll spy if we're on achievement detail page
-    if (location.pathname.startsWith("/achievement/")) {
+    // Don't do scroll spy if we're on achievement detail page or team page
+    if (location.pathname.startsWith("/achievement/") || location.pathname === "/team") {
       return;
     }
 
@@ -62,7 +65,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [location]);
 
+  /* ---------- Handle Scroll or Navigation ---------- */
   const handleScroll = (sectionId) => {
+    if (sectionId === "team") {
+      navigate("/team");
+      setOpen(false);
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+      setOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = -80;
@@ -74,15 +90,32 @@ export default function Navbar() {
     }
   };
 
+  /* ---------- Scroll to section if coming from another page ---------- */
+  useEffect(() => {
+    if (location.pathname === "/" && location.state?.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      const element = document.getElementById(sectionId);
+      if (element) {
+        setTimeout(() => {
+          const offset = -80;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + offset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+
+          // Clear state to avoid scrolling on refresh
+          window.history.replaceState({}, document.title);
+        }, 100); // Small delay to ensure DOM is ready
+      }
+    }
+  }, [location]);
+
   return (
     <nav
       className={`fixed top-0 z-50 w-full backdrop-blur-md
         transition-all duration-[1200ms] ease-out
         ${mounted ? "translate-y-0 opacity-100" : "-translate-y-12 opacity-0"}
-        ${
-          scrolled
-            ? "bg-[#182C4A]/95 shadow-[0_0_25px_rgba(80,200,220,0.25)] border-b border-[#50C8DC]/30"
-            : "bg-[#182C4A]/80 border-b border-[#50C8DC]/10"
+        ${scrolled
+          ? "bg-[#182C4A]/95 shadow-[0_0_25px_rgba(80,200,220,0.25)] border-b border-[#50C8DC]/30"
+          : "bg-[#182C4A]/80 border-b border-[#50C8DC]/10"
         }
       `}
     >
@@ -128,10 +161,9 @@ export default function Navbar() {
               <button
                 onClick={() => handleScroll(item.id)}
                 className={`transition-all duration-300
-                  ${
-                    activeSection === item.id
-                      ? "text-[#50C8DC]"
-                      : "glitch-hover group-hover:text-[#50C8DC]"
+                  ${activeSection === item.id
+                    ? "text-[#50C8DC]"
+                    : "glitch-hover group-hover:text-[#50C8DC]"
                   }
                 `}
               >
@@ -141,10 +173,9 @@ export default function Navbar() {
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-[#50C8DC]
                     transition-all duration-300 shadow-[0_0_12px_#50C8DC]
-                    ${
-                      activeSection === item.id
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
+                    ${activeSection === item.id
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                     }
                   `}
                 />

@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Imagine_cup from "../assets/imagine_cup_banner.png";
 
-const spinnerFrames = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
+const spinnerFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
 const slides = [
   {
@@ -176,7 +176,7 @@ export default function Carousel() {
       const timeout = setTimeout(() => {
         setTypedText((p) => p + staticText[charIndex]);
         setCharIndex((p) => p + 1);
-        tickSound.current?.play().catch(() => {});
+        tickSound.current?.play().catch(() => { });
       }, 60);
       return () => clearTimeout(timeout);
     } else {
@@ -191,7 +191,7 @@ export default function Carousel() {
     const interval = setInterval(() => {
       setSpinnerIndex((p) => (p + 1) % spinnerFrames.length);
       setCursorVisible((p) => !p);
-      tickSound.current?.play().catch(() => {});
+      tickSound.current?.play().catch(() => { });
     }, 120);
 
     return () => clearInterval(interval);
@@ -245,12 +245,12 @@ export default function Carousel() {
   }, [touchEnd]);
 
   return (
-    <section 
-      className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center"
+    <section
+      className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center justify-center w-full md:w-[100vw] md:left-[50%] md:right-[50%] md:-ml-[50vw] md:-mr-[50vw] overflow-hidden"
       onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
       onTouchEnd={(e) => setTouchEnd(e.changedTouches[0].clientX)}
     >
-      <div key={current}>
+      <div key={current} className="w-screen">
         {slides[current].content({
           mounted,
           scanDone,
