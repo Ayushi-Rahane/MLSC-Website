@@ -30,9 +30,9 @@ const slides = [
         <h1
           className="font-orbitron font-extrabold text-[3.5rem] sm:text-[6rem] md:text-[7.5rem] leading-none text-white"
           style={{
-            WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            WebkitTextStroke: "1px rgba(255,255,255,0.8)",
             textShadow:
-              "0 0 20px rgba(0,120,212,0.4), 0 0 40px rgba(0,120,212,0.2)",
+              "0 0 30px rgba(0,120,212,0.8), 0 0 60px rgba(0,120,212,0.6), 0 0 100px rgba(0,120,212,0.4)",
           }}
         >
           MICROSOFT
@@ -43,9 +43,9 @@ const slides = [
             text-[2.5rem] sm:text-[4.5rem] md:text-[5.5rem]
             font-orbitron font-extrabold tracking-widest text-transparent"
           style={{
-            WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            WebkitTextStroke: "1px rgba(255,255,255,0.8)",
             textShadow:
-              "0 0 20px rgba(0,120,212,0.4), 0 0 40px rgba(0,120,212,0.2)",
+              "0 0 30px rgba(0,120,212,0.8), 0 0 60px rgba(0,120,212,0.6), 0 0 100px rgba(0,120,212,0.4)",
           }}
         >
           CHAPTER
