@@ -20,11 +20,15 @@ export default function Team() {
       <div className="max-w-7xl mx-auto px-6 relative z-10 pt-32">
 
         {/* Page Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="text-6xl md:text-8xl font-black font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-[#00c6ff] via-[#0072ff] to-[#00c6ff] drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] drop-shadow-[0_0_30px_rgba(192,192,192,0.6)] mb-4 tracking-tighter animate-pulse-slow">
+        <div className="text-center mb-16 animate-fade-in-up flex flex-col items-center">
+          <h1 className="text-6xl text-white font-zendots font-semibold drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] mb-4">
             The Minds Behind MLSC
           </h1>
-          <div className="flex items-center justify-center gap-4">
+          <div className="w-24 h-1 bg-[#50C8DC] mt-3 mx-auto rounded-full"
+            style={{ boxShadow: "0 0 15px rgba(80, 200, 220, 0.45)" }}
+          />
+
+          <div className="flex items-center justify-center gap-4 mt-8">
             <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-[#50C8DC] shadow-[0_0_15px_#50C8DC]"></div>
             <p className="font-vt323 text-2xl text-[#50C8DC] tracking-[0.2em] drop-shadow-[0_0_8px_rgba(80,200,220,0.8)]">
               SYSTEM_CREATORS_2025-2026

@@ -8,20 +8,18 @@ export default function About() {
   return (
     <div id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       {/* Heading with Animation */}
-      <div 
+      <div
         ref={headingRef}
-        className={`mb-16 transition-all duration-700 ${
-          headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        className={`mb-16 transition-all duration-700 flex justify-center ${headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
       >
-        <div className={`${headingVisible ? 'animate-float-header' : ''} inline-block relative`}>
+        <div className={`${headingVisible ? 'animate-float-header' : ''} inline-block relative text-center`}>
           <h1 className="text-6xl text-white font-zendots font-semibold mb-6 relative inline-block drop-shadow-[0_0_20px_rgba(80,200,220,0.3)]">
             About Us
           </h1>
-          {/* Underline (gradient removed) */}
-          <div
-            className="absolute -bottom-2 left-0 h-1 bg-[#50C8DC] w-full rounded-full"
-            style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.45)" }}
+          {/* Standard centered underline */}
+          <div className="w-24 h-1 bg-[#50C8DC] mt-3 mx-auto rounded-full"
+            style={{ boxShadow: "0 0 15px rgba(80, 200, 220, 0.45)" }}
           />
           {headingVisible && (
             <>
@@ -33,11 +31,10 @@ export default function About() {
       </div>
 
       {/* Who we are + Vision */}
-      <div 
+      <div
         ref={contentRef}
-        className={`grid md:grid-cols-2 gap-12 mb-16 transition-all duration-700 ${
-          contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        className={`grid md:grid-cols-2 gap-12 mb-16 transition-all duration-700 ${contentVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
       >
         <div className="animate-float-y">
           <h2 className="text-3xl mb-6 text-white relative inline-block">
@@ -56,7 +53,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="animate-float-x bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10"  style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
+        <div className="animate-float-x bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-white/10" style={{ boxShadow: "inset 0 0 20px rgba(80, 200, 220, 0.1)" }}>
           <h3 className="text-2xl mb-6 text-[#50C8DC] flex items-center gap-2">
             <Sparkles size={24} />
             Our Vision

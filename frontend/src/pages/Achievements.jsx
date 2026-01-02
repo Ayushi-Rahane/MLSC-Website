@@ -12,17 +12,22 @@ export default function Achievements() {
   return (
     <section className="px-8 md:px-16 py-20 text-white relative">
       {/* Heading */}
-      <div
-        ref={headingRef}
-        className={`
-          mb-16 inline-block relative
-          ${headingVisible ? "animate-heading-enter animate-heading-float" : "opacity-0"}
-        `}
-      >
-        <h1 className="text-6xl text-white text-center font-zendots font-semibold mb-4 drop-shadow-[0_0_20px_rgba(242,80,34,0.3)]">
-          Our Achievements
-        </h1>
-        {/* Underline removed per request */}
+      {/* Heading */}
+      <div className="flex justify-center mb-16">
+        <div
+          ref={headingRef}
+          className={`
+            relative inline-block
+            ${headingVisible ? "animate-heading-enter animate-heading-float" : "opacity-0"}
+          `}
+        >
+          <h1 className="text-3xl md:text-6xl text-white text-center font-zendots font-semibold mb-4 drop-shadow-[0_0_20px_rgba(242,80,34,0.3)]">
+            Our Achievements
+          </h1>
+          <div className="w-24 h-1 bg-[#50C8DC] mt-3 mx-auto rounded-full"
+            style={{ boxShadow: "0 0 15px rgba(80, 200, 220, 0.45)" }}
+          />
+        </div>
       </div>
       {headingVisible && (
         <>
