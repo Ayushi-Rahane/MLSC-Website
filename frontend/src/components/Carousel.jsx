@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import Imagine_cup from "../assets/imagine_cup_banner.png";
 
 const spinnerFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
@@ -35,7 +34,7 @@ const slides = [
               "0 0 30px rgba(0,120,212,0.8), 0 0 60px rgba(0,120,212,0.6), 0 0 100px rgba(0,120,212,0.4)",
           }}
         >
-          MICROSOFT
+          MICROSOFT LEARN
         </h1>
 
         <h2
@@ -48,7 +47,7 @@ const slides = [
               "0 0 30px rgba(0,120,212,0.8), 0 0 60px rgba(0,120,212,0.6), 0 0 100px rgba(0,120,212,0.4)",
           }}
         >
-          CHAPTER
+          STUDENT CHAPTER
           {mounted && !scanDone && (
             <span
               className="chapter-scanline"
@@ -72,61 +71,6 @@ const slides = [
             {cursorVisible ? "_" : " "}
           </span>
         </p>
-      </div>
-    ),
-  },
-
-
-  // SLIDE 2 — IMAGINE CUP
-  {
-    id: 2,
-    content: () => (
-      <div className="relative w-screen min-h-[75vh] sm:min-h-[85vh] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${Imagine_cup})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-[#182C4A]/95 via-[#182C4A]/80 to-[#182C4A]/60" />
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:pl-32 sm:pr-16 flex justify-center sm:justify-end">
-          <div className="max-w-full sm:max-w-[28rem] text-left">
-            <h2 className="text-xl sm:text-4xl font-bold text-[#50C8DC]">
-              Upcoming Event
-            </h2>
-
-            <h3 className="mt-2 sm:mt-4 text-2xl sm:text-3xl font-semibold text-[#0078D4]">
-              Imagine Cup 2026
-            </h3>
-
-            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-200">
-              Imagine Cup is Microsoft’s global student startup competition where
-              students turn bold ideas into real-world solutions using AI and cloud
-              technologies.
-            </p>
-
-            <ul className="mt-3 sm:mt-4 text-sm sm:text-base text-gray-200 list-disc list-inside space-y-1 sm:space-y-2">
-              <li>Up to $5,000 Azure credits</li>
-              <li>Build real-world AI solutions</li>
-              <li>Mentorship from Microsoft experts</li>
-              <li>Global recognition</li>
-            </ul>
-
-            <div className="mt-6 sm:mt-8 flex gap-4">
-              <a
-                href="https://imaginecup.microsoft.com"
-                target="_blank"
-                rel="noreferrer"
-                className="px-5 sm:px-6 py-2 sm:py-3 rounded-lg bg-[#0078D4] hover:bg-[#50C8DC] transition font-semibold"
-              >
-                Register Now
-              </a>
-
-              <button className="px-5 sm:px-6 py-2 sm:py-3 rounded-lg border border-[#50C8DC] text-[#50C8DC] hover:bg-[#50C8DC] hover:text-[#182C4A] transition font-semibold">
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     ),
   },
@@ -262,41 +206,7 @@ export default function Carousel() {
           cursorVisible,
         })}
       </div>
-      {/* LEFT ARROW */}
-      <button
-        onClick={() =>
-          setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
-        }
-        className="carousel-arrow absolute left-4 sm:left-8 z-20
-                  w-10 h-10 sm:w-12 sm:h-12
-                  rounded-full
-                  bg-[#0078D4]/90 hover:bg-[#50C8DC]
-                  text-white text-2xl
-                  flex items-center justify-center
-                  backdrop-blur-md
-                  transition
-                  border border-[#50C8DC]/50 hover:border-[#50C8DC]"
-      >
-        ‹
-      </button>
-
-      {/* RIGHT ARROW */}
-      <button
-        onClick={() =>
-          setCurrent((prev) => (prev + 1) % slides.length)
-        }
-        className="carousel-arrow absolute right-4 sm:right-8 z-20
-                  w-10 h-10 sm:w-12 sm:h-12
-                  rounded-full
-                  bg-[#0078D4]/90 hover:bg-[#50C8DC]
-                  text-white text-2xl
-                  flex items-center justify-center
-                  backdrop-blur-md
-                  transition
-                  border border-[#50C8DC]/50 hover:border-[#50C8DC]"
-      >
-        ›
-      </button>
+      {/* Navigation arrows removed */}
 
     </section>
   );

@@ -151,7 +151,7 @@ export default function Navbar() {
 
         {/* Desktop Nav (delayed reveal) */}
         <ul
-          className={`hidden md:flex gap-10 text-base font-orbitron font-semibold tracking-widest text-white
+          className={`hidden md:flex gap-10 text-base font-orbitron font-bold tracking-widest text-white
             transition-all duration-[900ms] delay-[600ms]
             ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}
           `}
@@ -197,7 +197,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-[#182C4A]/95 backdrop-blur-lg border-t border-[#50C8DC]/10">
-          <ul className="flex flex-col py-8 px-6 gap-6 text-lg font-orbitron font-semibold tracking-widest text-white">
+          <ul className="flex flex-col py-8 px-6 gap-6 text-lg font-orbitron font-bold tracking-widest text-white">
             {navLinks.map((item) => (
               <li key={item.id}>
                 <button
