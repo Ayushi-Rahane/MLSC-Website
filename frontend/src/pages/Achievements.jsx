@@ -19,21 +19,10 @@ export default function Achievements() {
           ${headingVisible ? "animate-heading-enter animate-heading-float" : "opacity-0"}
         `}
       >
-        <h1 className="text-6xl font-black mb-4"
-          style={{
-            background: "linear-gradient(135deg, #F25022 0%, #50C8DC 50%, #0078D4 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            filter: "drop-shadow(0 0 20px rgba(242, 80, 34, 0.3))"
-          }}
-        >
+        <h1 className="text-6xl text-white text-center font-zendots font-semibold mb-4 drop-shadow-[0_0_20px_rgba(242,80,34,0.3)]">
           Our Achievements
         </h1>
-        {/* Underline */}
-        <div className="w-40 h-1 bg-gradient-to-r from-[#F25022] via-[#50C8DC] to-[#0078D4] rounded-full"
-          style={{ boxShadow: "0 0 15px rgba(242, 80, 34, 0.6)" }}
-        />
+        {/* Underline removed per request */}
       </div>
       {headingVisible && (
         <>

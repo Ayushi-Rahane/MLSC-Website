@@ -10,6 +10,8 @@ module.exports = {
         orbitron: ['Orbitron', 'sans-serif'],
         vt323: ['VT323', 'monospace'],
         sharetech: ['"Share Tech Mono"', 'monospace'],
+        expletus: ['"Expletus Sans"', 'sans-serif'],
+        zendots: ['"Zen Dots"', 'cursive'],
       },
       colors: {
         'mlsc-dark-1': '#243B55',

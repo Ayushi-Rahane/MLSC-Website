@@ -15,21 +15,13 @@ export default function About() {
         }`}
       >
         <div className={`${headingVisible ? 'animate-float-header' : ''} inline-block relative`}>
-          <h1 className="text-6xl font-black mb-6 relative inline-block"
-            style={{
-              background: "linear-gradient(135deg, #50C8DC 0%, #0078D4 50%, #F25022 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              filter: "drop-shadow(0 0 20px rgba(80, 200, 220, 0.3))"
-            }}
-          >
+          <h1 className="text-6xl text-white font-zendots font-semibold mb-6 relative inline-block drop-shadow-[0_0_20px_rgba(80,200,220,0.3)]">
             About Us
           </h1>
-          {/* Glowing underline */}
-          <div 
-            className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-[#50C8DC] via-[#0078D4] to-[#F25022] w-full rounded-full"
-            style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.6), 0 0 40px rgba(0, 120, 212, 0.4)" }}
+          {/* Underline (gradient removed) */}
+          <div
+            className="absolute -bottom-2 left-0 h-1 bg-[#50C8DC] w-full rounded-full"
+            style={{ boxShadow: "0 0 20px rgba(80, 200, 220, 0.45)" }}
           />
           {headingVisible && (
             <>

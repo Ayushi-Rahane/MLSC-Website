@@ -11,19 +11,11 @@ export default function Contact() {
     <section ref={sectionRef} className={`min-h-screen px-8 md:px-16 lg:px-24 py-20 text-white ${sectionVisible ? 'animate-slide-up' : 'opacity-0'}`}>
       {/* Heading */}
       <div ref={headingRef} className={`flex flex-col items-center mb-12 relative ${headingVisible ? 'animate-float-header' : ''}`}>
-            <h1 className="text-6xl font-black text-center"
-              style={{
-                background: "linear-gradient(135deg, #00A4EF 0%, #50C8DC 50%, #7FBA00 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "drop-shadow(0 0 20px rgba(0, 164, 239, 0.3))"
-              }}
-            >
+            <h1 className="text-6xl text-white text-center font-zendots font-semibold drop-shadow-[0_0_20px_rgba(0,164,239,0.3)]">
               Contact Us
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#00A4EF] via-[#50C8DC] to-[#7FBA00] mt-3 mx-auto rounded-full" 
-              style={{ boxShadow: "0 0 15px rgba(0, 164, 239, 0.6)" }}
+            <div className="w-24 h-1 bg-[#00A4EF] mt-3 mx-auto rounded-full" 
+              style={{ boxShadow: "0 0 15px rgba(0, 164, 239, 0.45)" }}
             />
             {headingVisible && (
               <>

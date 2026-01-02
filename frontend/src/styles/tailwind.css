@@ -25,6 +25,8 @@ body {
 .font-orbitron { font-family: 'Orbitron', sans-serif; }
 .font-vt323 { font-family: 'VT323', monospace; }
 .font-sharetech { font-family: 'Share Tech Mono', monospace; }
+.font-expletus { font-family: 'Expletus Sans', sans-serif; }
+.font-zendots { font-family: 'Zen Dots', cursive; }
 
 /* Slide-up fade-in animation */
 @keyframes slideUpFade {
