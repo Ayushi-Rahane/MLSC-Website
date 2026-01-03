@@ -27,30 +27,22 @@ export const teamData = [
         ]
     },
     {
-        id: "skillsphere",
-        domainName: "SkillSphere",
-        description: "Managing talent, community engagement, and internal technology initiatives.",
-        color: "from-[#00a4ef] to-[#0078d4]", // Microsoft Blue
+        id: "talentsphere",
+        domainName: "TalentSphere",
+        description: "Managing talent, website and internal technology initiatives.",
+        color: "from-[#00a4ef] to-[#0078d4]",
         icon: "Brain",
         lead: {
-            name: "Aarya Kulkarni",
-            role: "Domain Lead",
+            name: "Karishma Chidgopkar",
+            role: "Talent & Tech Lead",
             classDept: "TY Comp",
             linkedin: "#",
-            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=SkillSphereLead"
+            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Karish"
         },
         subTeams: [
             {
                 id: "talent-tech",
                 name: "Talent & Tech",
-                description: "Internal tech team ensuring long-term capability building.",
-                lead: {
-                    name: "Karishma Chidgopkar",
-                    role: "Talent & Tech Lead",
-                    classDept: "TY Comp",
-                    linkedin: "#",
-                    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Karish"
-                },
                 subDivisions: [
                     {
                         name: "Web3",
@@ -82,7 +74,25 @@ export const teamData = [
                         ]
                     }
                 ]
-            },
+            }
+        ],
+    },
+
+    {
+        id: "skillsphere",
+        domainName: "SkillSphere",
+        description: "Managing talent, community engagement, and internal technology initiatives.",
+        color: "from-[#00a4ef] to-[#0078d4]", // Microsoft Blue
+        icon: "Brain",
+        lead: {
+            name: "Aarya Kulkarni",
+            role: "Domain Lead",
+            classDept: "TY Comp",
+            linkedin: "#",
+            image: "https://api.dicebear.com/7.x/avataaars/svg?seed=SkillSphereLead"
+        },
+        subTeams: [
+
             {
                 id: "community",
                 name: "Community",
@@ -133,6 +143,7 @@ export const teamData = [
             }
         ]
     },
+
     {
         id: "assetsphere",
         domainName: "AssetSphere",
