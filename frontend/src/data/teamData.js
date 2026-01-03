@@ -6,7 +6,7 @@ export const teamData = [
         color: "from-[#00ff41] to-[#008f11]", // Matrix Green
         icon: "Code",
         lead: {
-            name: "CodeSphere Lead",
+            name: "Eesha Kamath",
             role: "Domain Lead",
             classDept: "TY Comp",
             linkedin: "#",
@@ -33,7 +33,7 @@ export const teamData = [
         color: "from-[#00a4ef] to-[#0078d4]", // Microsoft Blue
         icon: "Brain",
         lead: {
-            name: "SkillSphere Lead",
+            name: "Aarya Kulkarni",
             role: "Domain Lead",
             classDept: "TY Comp",
             linkedin: "#",
@@ -56,29 +56,29 @@ export const teamData = [
                         name: "Web3",
                         color: "border-[#f25022]",
                         members: [
-                            { name: "Dnyaneshwari Khatke", role: "Web3 Developer", classDept: "SY IT", linkedin: "#" },
-                            { name: "Aditi Shivapurkar", role: "Web3 Developer", classDept: "SY IT", linkedin: "#" },
-                            { name: "Riya Khare", role: "Web3 Developer", classDept: "SY IT", linkedin: "#" }
+                            { name: "Dnyaneshwari Khatke", role: "Web3 Architect", classDept: "SY IT", linkedin: "#" },
+                            { name: "Aditi Shivapurkar", role: "Web3 Architect", classDept: "SY IT", linkedin: "#" },
+                            { name: "Riya Khare", role: "Web3 Architect", classDept: "SY IT", linkedin: "#" }
                         ]
                     },
                     {
                         name: "Web Dev",
                         color: "border-[#7fba00]",
                         members: [
-                            { name: "Ayushi Rahane", role: "Web Developer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Srushti Sondawale", role: "Web Developer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Prisha Parikh", role: "Web Developer", classDept: "SY Comp", linkedin: "#" }
+                            { name: "Ayushi Rahane", role: "Web Dev Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Srushti Sondawale", role: "Web Dev Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Prisha Parikh", role: "Web Dev Architect", classDept: "SY Comp", linkedin: "#" }
                         ]
                     },
                     {
                         name: "AIML",
                         color: "border-[#ffb900]",
                         members: [
-                            { name: "Shriya Jaripatke", role: "AIML Engineer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Sanjana Kulkarni", role: "AIML Engineer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Sakshi Kale", role: "AIML Engineer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Tanmayi Kulkarni", role: "AIML Engineer", classDept: "SY Comp", linkedin: "#" },
-                            { name: "Sahisha Chipade", role: "AIML Engineer", classDept: "SY Comp", linkedin: "#" }
+                            { name: "Shriya Jaripatke", role: "AIML Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Sanjana Kulkarni", role: "AIML Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Sakshi Kale", role: "AIML Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Tanmayi Kulkarni", role: "AIML Architect", classDept: "SY Comp", linkedin: "#" },
+                            { name: "Sahisha Chipade", role: "AIML Architect", classDept: "SY Comp", linkedin: "#" }
                         ]
                     }
                 ]
@@ -87,13 +87,13 @@ export const teamData = [
                 id: "community",
                 name: "Community",
                 description: "Events, Creative Design, and Partnerships.",
-                lead: {
-                    name: "Community Lead",
-                    role: "Community Lead",
-                    classDept: "TY Comp",
-                    linkedin: "#",
-                    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=CommunityLead"
-                },
+                /* lead: {
+                     name: "Community Lead",
+                     role: "Community Lead",
+                     classDept: "TY Comp",
+                     linkedin: "#",
+                     image: "https://api.dicebear.com/7.x/avataaars/svg?seed=CommunityLead"
+                 },*/
                 subDivisions: [
                     {
                         name: "Events",
@@ -140,7 +140,7 @@ export const teamData = [
         color: "from-[#ffb900] to-[#d83b01]", // MS Yellow/Orange
         icon: "Coins",
         lead: {
-            name: "AssetSphere Lead",
+            name: "Aarya Patil",
             role: "Domain Lead",
             classDept: "TY Comp",
             linkedin: "#",
@@ -151,13 +151,13 @@ export const teamData = [
                 id: "finance",
                 name: "Finance",
                 description: "Budgeting, accounts, and financial planning.",
-                lead: {
-                    name: "Finance Lead",
-                    role: "Finance Lead",
-                    classDept: "TY Comp",
-                    linkedin: "#",
-                    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=FinanceLead"
-                },
+                /* lead: {
+                     name: "Finance Lead",
+                     role: "Finance Lead",
+                     classDept: "TY Comp",
+                     linkedin: "#",
+                     image: "https://api.dicebear.com/7.x/avataaars/svg?seed=FinanceLead"
+                 },*/
                 members: [
                     { name: "Arya Dixit", role: "Ledger Architect", classDept: "TY Comp", linkedin: "#" },
                     { name: "Shubhashree Shinde", role: "Ledger Architect", classDept: "TY Comp", linkedin: "#" },

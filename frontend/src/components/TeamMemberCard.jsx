@@ -19,8 +19,8 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
         }
     }
 
-    const cardHeight = isLead ? "h-[28rem]" : "h-96";
-    const imageSize = isLead ? "w-48 h-48" : "w-32 h-32";
+    const cardHeight = isLead ? "h-[28rem]" : "h-[26rem]";
+    const imageSize = isLead ? "w-52 h-52" : "w-40 h-40";
     const fontSize = isLead ? "text-2xl" : "text-xl";
 
     return (
@@ -72,7 +72,8 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                 <div className="cyber-corner absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/20 rounded-br-xl transition-all duration-300" />
 
                 {/* Image Container */}
-                <div className={`${imageSize} mb-6 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative group-hover:scale-105 transition-transform duration-500`}>
+                {/* Image Container */}
+                <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative group-hover:scale-105 transition-transform duration-500`}>
                     {/* Glowing ring around image */}
                     <div
                         className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-80 transition-opacity"
@@ -96,23 +97,21 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                 {/* Details Section */}
                 <div className="text-center w-full z-10 flex flex-col flex-grow">
                     <h3
-                        className={`${fontSize} font-orbitron font-bold text-white mb-1 transition-colors drop-shadow-md dynamic-text-hover`}
+                        className={`${fontSize} font-orbitron font-bold text-white mb-2 transition-colors drop-shadow-md dynamic-text-hover text-2xl md:text-2xl`}
                     >
                         {member.name}
                     </h3>
 
                     <p
-                        className="text-sm font-vt323 tracking-widest uppercase mb-4 opacity-80 group-hover:opacity-100 transition-opacity"
+                        className="text-lg font-vt323 tracking-widest uppercase mb-3 opacity-80 group-hover:opacity-100 transition-opacity"
                         style={{ color: hexColor }}
                     >
                         {member.role}
                     </p>
 
-                    <div className="w-12 h-[1px] bg-white/10 mx-auto mb-4 group-hover:w-24 transition-all duration-500"></div>
+                    <div className="w-12 h-[1px] bg-white/10 mx-auto mb-2 group-hover:w-24 transition-all duration-500"></div>
 
-                    <p className="text-white/60 font-mono text-xs mb-1 group-hover:text-white/90 transition-colors">
-                        {member.classDept || "N/A"}
-                    </p>
+
 
                     <div className="flex-grow"></div>
 

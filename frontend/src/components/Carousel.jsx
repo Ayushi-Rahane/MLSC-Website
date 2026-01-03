@@ -27,7 +27,7 @@ const slides = [
         </div>
 
         <h1
-          className="font-orbitron font-extrabold text-[3.5rem] sm:text-[6rem] md:text-[7.5rem] leading-none text-white"
+          className="font-orbitron font-extrabold text-[3.5rem] sm:text-[6rem] md:text-[7.5rem] leading-none text-white animate-float-y"
           style={{
             WebkitTextStroke: "1px rgba(255,255,255,0.8)",
             textShadow:
@@ -40,7 +40,7 @@ const slides = [
         <h2
           className="relative overflow-hidden mt-2
             text-[2.5rem] sm:text-[4.5rem] md:text-[5.5rem]
-            font-orbitron font-extrabold tracking-widest text-transparent"
+            font-orbitron font-extrabold tracking-widest text-transparent animate-float-y"
           style={{
             WebkitTextStroke: "1px rgba(255,255,255,0.8)",
             textShadow:

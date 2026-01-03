@@ -58,7 +58,7 @@ export default function Team() {
             </div>
 
             <h2 className="text-4xl font-bold text-white mb-2">{mlscHead.name}</h2>
-            <p className="text-[#50C8DC] text-xl font-vt323 tracking-widest mb-6">{mlscHead.role} | {mlscHead.classDept}</p>
+            <p className="text-[#50C8DC] text-xl font-vt323 tracking-widest mb-6">{mlscHead.role}</p>
 
             <p className="text-white/70 italic text-lg mb-8 font-serif">
               "{mlscHead.quote}"
