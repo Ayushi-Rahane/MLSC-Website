@@ -109,7 +109,7 @@ export default function EventCard({ event }) {
         </p>
 
         {/* BUTTON */}
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap items-center gap-4">
           <a
             href="https://imaginecup.microsoft.com"
             target="_blank"
@@ -117,10 +117,15 @@ export default function EventCard({ event }) {
             className="inline-block px-6 py-2 rounded-lg
               bg-[#0078D4] hover:bg-[#50C8DC]
               text-white font-semibold
-              transition"
+              transition z-20 relative"
+            onClick={(e) => e.stopPropagation()}
           >
             Register Now
           </a>
+
+          <span className="text-[#50C8DC] text-sm group-hover:translate-x-1 transition-transform">
+            Click to view details →
+          </span>
         </div>
       </div>
     </Link>
