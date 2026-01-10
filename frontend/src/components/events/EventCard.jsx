@@ -1,55 +1,57 @@
 import useScrollReveal from "../../hooks/useScrollReveal";
 import { Clock, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function EventCard({ event }) {
   const { ref, visible } = useScrollReveal();
 
   return (
-  <div
-  ref={ref}
-  className={`
+    <Link
+      to={`/events/${event.id}`}
+      ref={ref}
+      className={`
     group relative flex flex-col md:flex-row gap-6
     bg-[#1B2B42]
     rounded-xl p-4 md:p-6
     transition-all duration-500
     ${visible ? "animate-slide-up animate-float" : "opacity-0"}
-    hover:scale-[1.03]
+    hover:scale-[1.03] cursor-pointer
   `}
->
-  {visible && (
-    <>
-      <span className="spark spark-all top-left" />
-      <span className="spark spark-all top-right" />
-      <span className="spark spark-all bottom-left" />
-      <span className="spark spark-all bottom-right" />
-    </>
-  )}
-{/* MICROSOFT OUTLINE (HOVER ONLY ROTATION) */}
-<div className="pointer-events-none absolute inset-0 rounded-xl
+    >
+      {visible && (
+        <>
+          <span className="spark spark-all top-left" />
+          <span className="spark spark-all top-right" />
+          <span className="spark spark-all bottom-left" />
+          <span className="spark spark-all bottom-right" />
+        </>
+      )}
+      {/* MICROSOFT OUTLINE (HOVER ONLY ROTATION) */}
+      <div className="pointer-events-none absolute inset-0 rounded-xl
   opacity-0 group-hover:opacity-100 transition duration-300
 ">
 
-{/* OUTLINE */}
-<div
-  className={`
+        {/* OUTLINE */}
+        <div
+          className={`
     absolute inset-0 rounded-xl transition-all duration-300 group-hover:animate-pulse
     ${event.ongoing ? "group-hover:ms-rotating-outline-fast" : ""}
   `}
-  style={{
-    border: "2px solid transparent",
-    background:
-      "linear-gradient(#1B2B42, #1B2B42) padding-box, linear-gradient(90deg, #F25022, #7FBA00, #00A4EF, #FFB900, #F25022) border-box",
-  }}
-/>
+          style={{
+            border: "2px solid transparent",
+            background:
+              "linear-gradient(#1B2B42, #1B2B42) padding-box, linear-gradient(90deg, #F25022, #7FBA00, #00A4EF, #FFB900, #F25022) border-box",
+          }}
+        />
 
 
-  {/* ELECTRIC SPARKS — ALL AT ONCE */}
-  <span className="spark spark-all top-left" />
-  <span className="spark spark-all top-right" />
-  <span className="spark spark-all bottom-left" />
-  <span className="spark spark-all bottom-right" />
+        {/* ELECTRIC SPARKS — ALL AT ONCE */}
+        <span className="spark spark-all top-left" />
+        <span className="spark spark-all top-right" />
+        <span className="spark spark-all bottom-left" />
+        <span className="spark spark-all bottom-right" />
 
-</div>
+      </div>
 
 
       {/* IMAGE */}
@@ -121,6 +123,6 @@ export default function EventCard({ event }) {
           </a>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

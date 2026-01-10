@@ -8,6 +8,7 @@ import NetworkBackground from "./components/NetworkBackground";
 import Footer from "./components/Footer";
 
 import Team from "./pages/Team";
+import EventDetails from "./components/events/EventDetails";
 
 const MemoizedNetworkBackground = memo(NetworkBackground);
 const MemoizedNavbar = memo(Navbar);
@@ -35,6 +36,18 @@ function App() {
             }
           />
           <Route path="/achievement/:id" element={<AchievementDetail />} />
+          <Route
+            path="/events/:id"
+            element={
+              <>
+                <MemoizedNavbar />
+                <main className="pt-20">
+                  <EventDetails />
+                </main>
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/team"
             element={
