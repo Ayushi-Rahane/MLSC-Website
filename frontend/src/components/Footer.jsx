@@ -22,9 +22,9 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <img src={mlscLogo} alt="MLSC Logo" className="w-16 h-auto mb-3" />
-             <h3 className="text-xl font-bold text-white">
-               Microsoft Learn Student Club
-             </h3>
+            <h3 className="text-xl font-bold text-white">
+              Microsoft Learn Student Club
+            </h3>
             <p className="mt-4 text-sm leading-relaxed">
               Empowering students through technology, innovation, and
               collaboration. Building future-ready tech leaders.
@@ -48,18 +48,18 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 mt-1 text-[#50C8DC]" />
-                        mlsc.ccew@cumminscollege.in
+                <Mail className="w-6 h-6 mt-1 text-[#50C8DC]" />
+                mlsc.ccew@cumminscollege.in
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-1 text-[#50C8DC]" />           
-                    Eesha Kamath: +91 8767121158 <br/>
-                    Vaishnavi Ahire: +91 8530017432
+                <Phone className="w-6 h-6 mt-1 text-[#50C8DC]" />
+                Aarya Kulkarni : +91 8010678775 <br />
+
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-1 text-[#50C8DC]" />
-               MKSSS's Cummins College of Engineering, <br/>
-               Pune, Maharashtra 411052, IN
+                <MapPin className="w-6 h-6 mt-1 text-[#50C8DC]" />
+                MKSSS's Cummins College of Engineering, <br />
+                Pune, Maharashtra 411052, IN
               </li>
             </ul>
           </div>
@@ -69,16 +69,16 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Follow Us</h4>
             <div className="flex gap-4">
               <a className="p-3 rounded-lg bg-white/5 hover:bg-[#0078D4] transition" href="https://www.linkedin.com/company/microsoft-learn-student-chapter-ccew/posts/?feedView=all">
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-6 h-6" />
               </a>
               <a className="p-3 rounded-lg bg-white/5 hover:bg-[#0078D4] transition" href="github.com">
-                <Github className="w-5 h-5" />
+                <Github className="w-6 h-6" />
               </a>
               <a className="p-3 rounded-lg bg-white/5 hover:bg-[#0078D4] transition">
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-6 h-6" />
               </a>
               <a className="p-3 rounded-lg bg-white/5 hover:bg-[#0078D4] transition" href="https://www.instagram.com/mlsc_ccoew/">
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>

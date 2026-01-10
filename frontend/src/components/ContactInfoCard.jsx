@@ -34,8 +34,8 @@ export default function ContactInfoCard() {
         </div>
         <div>
           <p className="font-semibold text-white">Phone</p>
-          <p className="text-gray-300">Eesha Kamath: +91 8767121158 <br />
-            Vaishnavi Ahire: +91 8530017432</p>
+          <p className="text-gray-300">Aarya Kulkarni : +91 8010678775 <br />
+          </p>
         </div>
       </div>
 
