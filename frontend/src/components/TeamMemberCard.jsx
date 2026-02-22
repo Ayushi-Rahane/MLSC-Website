@@ -72,11 +72,10 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                 <div className="cyber-corner absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/20 rounded-br-xl transition-all duration-300" />
 
                 {/* Image Container */}
-                {/* Image Container */}
-                <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative group-hover:scale-105 transition-transform duration-500`}>
+                <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative group-hover:scale-125 group-hover:-translate-y-6 transition-all duration-500 z-20`}>
                     {/* Glowing ring around image */}
                     <div
-                        className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-80 transition-opacity"
+                        className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity"
                         style={{ borderColor: hexColor }}
                     />
 
@@ -90,7 +89,7 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                     <img
                         src={member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`}
                         alt={member.name}
-                        className="w-full h-full rounded-full object-cover bg-slate-800 relative z-10"
+                        className="w-full h-full rounded-full object-cover bg-slate-800 relative z-30 shadow-2xl transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                     />
                 </div>
 

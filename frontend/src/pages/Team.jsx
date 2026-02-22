@@ -44,15 +44,15 @@ export default function Team() {
 
           <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-8 md:p-12 text-center max-w-2xl w-full relative group hover:border-[#50C8DC]/50 transition-all duration-500 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
             {/* Head Avatar */}
-            <div className="w-48 h-48 mx-auto mb-8 relative">
+            <div className="w-48 h-48 mx-auto mb-8 relative group-hover:scale-125 group-hover:-translate-y-8 transition-all duration-500 z-20">
               <div className="absolute inset-0 rounded-full border-2 border-[#50C8DC] animate-ping opacity-20"></div>
               <div className="absolute inset-0 rounded-full border border-[#50C8DC] shadow-[0_0_20px_#50C8DC]"></div>
               <img
                 src={mlscHead.image}
                 alt="Head"
-                className="w-full h-full rounded-full object-cover bg-slate-900 relative z-10"
+                className="w-full h-full rounded-full object-cover bg-slate-900 relative z-30 shadow-2xl transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(80,200,220,0.4)]"
               />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#50C8DC] text-[#050a14] font-bold font-orbitron px-4 py-1 rounded text-sm whitespace-nowrap z-20">
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-[#50C8DC] text-[#050a14] font-bold font-orbitron px-4 py-1 rounded text-sm whitespace-nowrap z-40 transition-all duration-500 group-hover:scale-110">
                 CHAPTER LEAD
               </div>
             </div>
