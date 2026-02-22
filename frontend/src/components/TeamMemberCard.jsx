@@ -19,8 +19,8 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
         }
     }
 
-    const cardHeight = isLead ? "h-[28rem]" : "h-[26rem]";
-    const imageSize = isLead ? "w-52 h-52" : "w-40 h-40";
+    const cardHeight = isLead ? "h-[30rem]" : "h-[28rem]";
+    const imageSize = isLead ? "w-60 h-60" : "w-48 h-48";
     const fontSize = isLead ? "text-2xl" : "text-xl";
 
     return (
@@ -72,7 +72,7 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                 <div className="cyber-corner absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/20 rounded-br-xl transition-all duration-300" />
 
                 {/* Image Container */}
-                <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative group-hover:scale-125 group-hover:-translate-y-6 transition-all duration-500 z-20`}>
+                <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative transition-all duration-500 z-20 group-hover:z-50`}>
                     {/* Glowing ring around image */}
                     <div
                         className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity"
@@ -89,7 +89,7 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                     <img
                         src={member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`}
                         alt={member.name}
-                        className="w-full h-full rounded-full object-cover bg-slate-800 relative z-30 shadow-2xl transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                        className="w-full h-full rounded-full object-cover relative z-30 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.5] group-hover:-translate-y-12 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_20px_rgba(255,255,255,0.2)]"
                     />
                 </div>
 

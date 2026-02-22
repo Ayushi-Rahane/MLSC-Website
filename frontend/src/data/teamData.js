@@ -1,28 +1,28 @@
-import eeshaKamathImg from "../assets/team_photos/eesha_kamath.jpg";
-import sofiaShahapureImg from "../assets/team_photos/sofia_shahapure.jpg";
-import aishwariBakshiImg from "../assets/team_photos/aishwari_bakshi.jpg";
-import dishaPatilImg from "../assets/team_photos/disha_patil.jpg";
-import dnyaneshwariKhatkeImg from "../assets/team_photos/dnyaneshwari_khatke.jpg";
-import aditiShivapurkarImg from "../assets/team_photos/aditi_shivapurkar.jpg";
-import ayushiRahaneImg from "../assets/team_photos/ayushi_rahane.jpg";
-import shriyaJaripatkeImg from "../assets/team_photos/shriya_jaripatke.jpg";
-import sanjanaKulkarniImg from "../assets/team_photos/sanjana_kulkarni.jpg";
-import sakshiKaleImg from "../assets/team_photos/sakshi_kale.jpg";
-import tanmayiKulkarniImg from "../assets/team_photos/tanmayi_kulkarni.jpg";
-import sahishaChipadeImg from "../assets/team_photos/sahisha_chipade.jpg";
-import iraKetkarImg from "../assets/team_photos/ira_ketkar.jpg";
-import mrunalDeoreImg from "../assets/team_photos/mrunal_deore.jpg";
-import hindaviBhosaleImg from "../assets/team_photos/hindavi_bhosale.jpg";
-import suhaniPatilImg from "../assets/team_photos/suhani_patil.jpg";
-import swaraliRakeImg from "../assets/team_photos/swarali_rake.jpg";
-import chinmayeeChapleImg from "../assets/team_photos/chinmayee_chaple.jpg";
-import muktaDeshpandeImg from "../assets/team_photos/mukta_deshpande.jpg";
-import vardaKachrooImg from "../assets/team_photos/varda_kachroo.jpg";
-import prachiGagnaniImg from "../assets/team_photos/prachi_gagnani.jpg";
-import ruchaWalvekarImg from "../assets/team_photos/rucha_walvekar.jpg";
-import shubhashreeShindeImg from "../assets/team_photos/shubhashree_shinde.jpg";
-import radhaShuklaImg from "../assets/team_photos/radha_shukla.jpg";
-import veenaShastriImg from "../assets/team_photos/veena_shastri.jpg";
+import eeshaKamathImg from "../assets/team_photos/eesha_kamath.png";
+import sofiaShahapureImg from "../assets/team_photos/sofia_shahapure.png";
+import aishwariBakshiImg from "../assets/team_photos/aishwari_bakshi.png";
+import dishaPatilImg from "../assets/team_photos/disha_patil.png";
+import dnyaneshwariKhatkeImg from "../assets/team_photos/dnyaneshwari_khatke.png";
+import aditiShivapurkarImg from "../assets/team_photos/aditi_shivapurkar.png";
+import ayushiRahaneImg from "../assets/team_photos/ayushi_rahane.png";
+import shriyaJaripatkeImg from "../assets/team_photos/shriya_jaripatke.png";
+import sanjanaKulkarniImg from "../assets/team_photos/sanjana_kulkarni.png";
+import sakshiKaleImg from "../assets/team_photos/sakshi_kale.png";
+import tanmayiKulkarniImg from "../assets/team_photos/tanmayi_kulkarni.png";
+import sahishaChipadeImg from "../assets/team_photos/sahisha_chipade.png";
+import iraKetkarImg from "../assets/team_photos/ira_ketkar.png";
+import mrunalDeoreImg from "../assets/team_photos/mrunal_deore.png";
+import hindaviBhosaleImg from "../assets/team_photos/hindavi_bhosale.png";
+import suhaniPatilImg from "../assets/team_photos/suhani_patil.png";
+import swaraliRakeImg from "../assets/team_photos/swarali_rake.png";
+import chinmayeeChapleImg from "../assets/team_photos/chinmayee_chaple.png";
+import muktaDeshpandeImg from "../assets/team_photos/mukta_deshpande.png";
+import vardaKachrooImg from "../assets/team_photos/varda_kachroo.png";
+import prachiGagnaniImg from "../assets/team_photos/prachi_gagnani.png";
+import ruchaWalvekarImg from "../assets/team_photos/rucha_walvekar.png";
+import shubhashreeShindeImg from "../assets/team_photos/shubhashree_shinde.png";
+import radhaShuklaImg from "../assets/team_photos/radha_shukla.png";
+import veenaShastriImg from "../assets/team_photos/veena_shastri.png";
 
 export const teamData = [
     {
@@ -146,7 +146,12 @@ export const teamData = [
                             { name: "Hindavi Bhosale", role: "Creative Architect", classDept: "TY IT", linkedin: "#", image: hindaviBhosaleImg },
                             { name: "Mayoori Kulkarni", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
                             { name: "Shraddha Bhujbal", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
-                            { name: "Suhani Patil", role: "Creative Architect", classDept: "TY IT", linkedin: "#", image: suhaniPatilImg }
+                            { name: "Suhani Patil", role: "Creative Architect", classDept: "TY IT", linkedin: "#", image: suhaniPatilImg },
+                            { name: "Radha Gorey", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
+                            { name: "Manjiri Relekar", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
+                            { name: "Jigisha Sonavane", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
+                            { name: "Aarya Pargaonkar", role: "Creative Architect", classDept: "TY IT", linkedin: "#" },
+                            { name: "Nidhi Shah", role: "Creative Architect", classDept: "TY IT", linkedin: "#" }
                         ]
                     },
                     {

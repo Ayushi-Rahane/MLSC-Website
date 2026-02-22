@@ -54,6 +54,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-6 h-6 mt-1 text-[#50C8DC]" />
                 Aarya Kulkarni : +91 8010678775 <br />
+                Vaishnavi Ahire : +91 8530017432
 
               </li>
               <li className="flex items-start gap-3">

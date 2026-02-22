@@ -40,7 +40,7 @@ export default function EventCard({ event }) {
           style={{
             border: "2px solid transparent",
             background:
-              "linear-gradient(#1B2B42, #1B2B42) padding-box, linear-gradient(90deg, #F25022, #7FBA00, #00A4EF, #FFB900, #F25022) border-box",
+              "linear-gradient(#1B2B42, #1B2B42) padding-box, linear-gradient(90deg, #0e0ae2ff, #006cbaff, #00A4EF, #0480d9ff, #889be5ff) border-box",
           }}
         />
 
