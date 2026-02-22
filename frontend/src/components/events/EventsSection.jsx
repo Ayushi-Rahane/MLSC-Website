@@ -8,12 +8,12 @@ export default function EventsSection() {
     <section className="min-h-screen px-8 md:px-16 lg:px-24 py-20 text-white">
 
       {/* PAGE TITLE */}
-    <div ref={headingRef} className={`flex flex-col items-center mb-12 relative ${headingVisible ? 'animate-float-header' : ''}`}>
-  <h1 className="text-6xl text-center font-zendots font-semi bold text-white drop-shadow-[0_0_20px_rgba(255,185,0,0.3)]">
-    Events
-  </h1>
-  <div className="w-24 h-1 bg-[#50C8DC] mt-3 mx-auto rounded-full" style={{ boxShadow: "0 0 15px rgba(80,200,220,0.45)" }} />
-</div>
+      <div ref={headingRef} className={`flex flex-col items-center mb-12 relative ${headingVisible ? 'animate-float-header' : ''}`}>
+        <h1 className="text-6xl text-center font-zendots font-semi bold text-white drop-shadow-[0_0_20px_rgba(255,185,0,0.3)]">
+          Events
+        </h1>
+        <div className="w-24 h-1 bg-[#50C8DC] mt-3 mx-auto rounded-full" style={{ boxShadow: "0 0 15px rgba(80,200,220,0.45)" }} />
+      </div>
       {headingVisible && (
         <>
           <span className="spark spark-all top-left" />
@@ -21,17 +21,31 @@ export default function EventsSection() {
         </>
       )}
 
-      {/* SUBTITLE */}
+      {/* UPCOMING SUBTITLE */}
       <h2 className="text-2xl font-semibold mb-8">
         Upcoming Events
       </h2>
 
-      {/* EVENTS LIST */}
+      {/* UPCOMING EVENTS LIST */}
       <div className="flex flex-col gap-8">
-        {events.map((event) => (
+        {events.filter((e) => !e.past).map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
       </div>
+
+      {/* PAST EVENTS */}
+      {events.some((e) => e.past) && (
+        <>
+          <h2 className="text-2xl font-semibold mt-16 mb-8 text-[#9BB7D4]">
+            Past Events
+          </h2>
+          <div className="flex flex-col gap-8 opacity-80">
+            {events.filter((e) => e.past).map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }

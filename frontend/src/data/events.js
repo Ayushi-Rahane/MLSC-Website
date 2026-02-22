@@ -3,7 +3,7 @@ import BlockCityImage from "../assets/blockcity_img.png";
 
 export const events = [
   {
-    id: 3,
+    id: 1,
     type: "Gamified Web3 Hackathon",
     date: "2026",
     title: "Anvaya: The BlockCity Edition",
@@ -54,7 +54,7 @@ export const events = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     type: "Student Startup Competition",
     date: "Jan, 2026",
     title: "2026 Imagine Cup Competition",
@@ -66,6 +66,7 @@ export const events = [
       "Imagine Cup is Microsoft's global student startup competition where students turn bold ideas into real-world solutions using AI and cloud technologies.",
     image: ImagineCupImage,
     ongoing: false,
+    past: true,
     steps: [
       {
         title: "MVP Round",
@@ -85,18 +86,5 @@ export const events = [
     ],
     rulesLink: "/assets/IC26 Official Rules and Regulations Dec 2025.pdf",
     registerLink: "https://imaginecup.microsoft.com"
-  },
-  {
-    id: 2,
-    type: "Workshop",
-    date: "Jan 25, 2025",
-    title: "Azure Cloud Workshop",
-    time: "2:00 PM - 5:00 PM",
-    location: "Tech Lab, Building A",
-    description:
-      "Hands-on workshop covering Azure fundamentals, cloud architecture, and deployment strategies",
-    image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998",
-    ongoing: false,
   }
 ];
