@@ -1,4 +1,6 @@
 import AchievementImg1 from "../assets/achievement1.png";
+import ImagineCupImg from "../assets/imagine_cup_banner.png";
+import blockcity from "../assets/blockcity_img.png";
 export const achievements = [
   {
     id: 1,
@@ -17,27 +19,27 @@ export const achievements = [
 
       The chapter aims to foster innovation, enhance technical skills, and represent MLSC CCEW on Microsoft’s global platforms.
           ` ,
-    image:AchievementImg1,
+    image: AchievementImg1,
     side: "left",
   },
   {
     id: 2,
-    title: "Tech Conference 2024",
-    date: "October 2024",
-    short: "Hosted our annual tech conference with 500+ attendees",
+    title: "Imagine Cup 2026",
+    date: "January 2026",
+    short: "Imagine Cup is Microsoft’s global student startup competition where students turn bold ideas into real-world solutions using AI and cloud technologies.",
     details:
-      "Organized a large-scale conference featuring industry speakers, workshops, and networking sessions focused on cloud and AI technologies.",
-    image: "https://plus.unsplash.com/premium_photo-1683120968693-9af51578770e?q=80&w=1563&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Imagine Cup is Microsoft’s springboard for student founders who seek to build commercially viable solutions using Microsoft’s cloud and AI platforms. To compete, a submission must use at least two Microsoft AI services. Submissions must include: completed responses to the application form, a pitch deck with an MVP demo video, and a video recording of the team’s pitch.",
+    image: ImagineCupImg,
     side: "right",
   },
   {
     id: 3,
-    title: "Cloud Workshop Series",
-    date: "September 2024",
-    short: "Completed 8-week intensive Azure workshop series",
+    title: "Anvaya: The BlockCity Edition",
+    date: "February 2026",
+    short: "Anvaya is a flagship event of MLSC CCEW, where students get a chance to showcase their technical skills and innovative ideas.",
     details:
-      "Conducted hands-on cloud workshops covering Azure fundamentals, DevOps, and deployment strategies.",
-    image: "https://images.unsplash.com/photo-1623652554515-91c833e3080e?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Anvaya is a flagship event of MLSC CCEW, where students get a chance to showcase their technical skills and innovative ideas. It builds the legacy of 'Anvaya' for future years (when we might actually have multiple events) while keeping the focus entirely on the BlockCity theme for this year.  ",
+    image: blockcity,
     side: "left",
   },
 ];

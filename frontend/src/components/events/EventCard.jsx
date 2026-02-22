@@ -110,18 +110,20 @@ export default function EventCard({ event }) {
 
         {/* BUTTON */}
         <div className="mt-4 flex flex-wrap items-center gap-4">
-          <a
-            href="https://imaginecup.microsoft.com"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block px-6 py-2 rounded-lg
-              bg-[#0078D4] hover:bg-[#50C8DC]
-              text-white font-semibold
-              transition z-20 relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Register Now
-          </a>
+          {event.registerLink && (
+            <a
+              href={event.registerLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block px-6 py-2 rounded-lg
+                bg-[#0078D4] hover:bg-[#50C8DC]
+                text-white font-semibold
+                transition z-20 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Register Now
+            </a>
+          )}
 
           <span className="text-[#50C8DC] text-sm group-hover:translate-x-1 transition-transform">
             Click to view details →

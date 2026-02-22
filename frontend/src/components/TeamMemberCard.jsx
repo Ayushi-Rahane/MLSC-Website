@@ -19,8 +19,8 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
         }
     }
 
-    const cardHeight = isLead ? "h-[30rem]" : "h-[28rem]";
-    const imageSize = isLead ? "w-60 h-60" : "w-48 h-48";
+    const cardHeight = isLead ? "h-[32rem]" : "h-[30rem]";
+    const imageSize = isLead ? "w-[17rem] h-[17rem]" : "w-56 h-56";
     const fontSize = isLead ? "text-2xl" : "text-xl";
 
     return (
@@ -75,13 +75,13 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                 <div className={`${imageSize} mb-4 rounded-full p-1 bg-gradient-to-br from-white/10 to-transparent relative transition-all duration-500 z-20 group-hover:z-50`}>
                     {/* Glowing ring around image */}
                     <div
-                        className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity"
+                        className="absolute inset-0 rounded-full border-2 border-dashed animate-spin-slow opacity-30 group-hover:opacity-100 transition-opacity z-10"
                         style={{ borderColor: hexColor }}
                     />
 
                     {isLead && (
                         <div
-                            className="absolute inset-0 rounded-full border animate-ping opacity-20"
+                            className="absolute inset-0 rounded-full border animate-ping opacity-20 z-10"
                             style={{ borderColor: hexColor }}
                         />
                     )}
@@ -89,7 +89,7 @@ export default function TeamMemberCard({ member, color, isLead = false }) {
                     <img
                         src={member.image || `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`}
                         alt={member.name}
-                        className="w-full h-full rounded-full object-cover relative z-30 transition-all duration-700 ease-out shadow-2xl group-hover:scale-[1.5] group-hover:-translate-y-12 group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_20px_rgba(255,255,255,0.2)]"
+                        className="w-full h-full rounded-full object-cover relative z-40 transition-all duration-700 ease-out shadow-2xl origin-bottom group-hover:scale-[1.35] group-hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),0_0_20px_rgba(255,255,255,0.2)]"
                     />
                 </div>
 
